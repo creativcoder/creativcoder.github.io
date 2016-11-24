@@ -1,0 +1,65 @@
+## Basic Configuration
+
+baseurl = "creativcoder.me"  
+builddrafts = false
+canonifyurls = true
+languageCode = "en-US"
+
+contentdir = "content"
+layoutdir = "layouts"
+publishdir = "public"
+
+author = "Rahul Sharma"
+title = "creativcoder"
+
+theme = "hugo-goa"
+
+## Hugo Built-in Features
+disqusShortname = "creativcoder" # Comment out to disable Disqus.
+googleAnalytics = "XYZ"
+enableRobotsTXT = true
+
+## Site Settings
+[params]
+author = "Rahul Sharma"
+intro = "Curious"
+description = "Autodidact code tinkerer. Loves exploring the bleeding edge in tech"
+authorImage = "logo.jpg"
+dateFormat = "Jan 2, 2006"
+
+## Site Meta Settings
+[params.meta]
+description = "Simple minimalist theme"
+keywords = "minimalist,blog,goa,hugo,developer"
+
+## Social Accounts
+[params.social]
+github = "creativcoder"
+linkedIn = "creativcoder"
+twitter = "creativcoder"
+facebook = "rsconcepts"
+google = "creativcoder"
+email = "rsconceptx@gmail.com"
+
+## Extras
+[params.extra]
+copyright = "© 2016. Rahul Sharma. [Some Rights Reserved](http://creativecommons.org/licenses/by/3.0/)." 
+poweredBy = true
+highlightJS = true
+
+## Main Menu
+[[menu.main]]
+    name = "blog"
+    weight = 100
+    identifier = "blog"
+    url = "/blog/"
+[[menu.main]]
+    name = "about"
+    identifier = "about"
+    weight = 200
+    url = "/about/"
+[[menu.main]]
+    name = "projects"
+    identifier = "projects"
+    weight = 300
+    url = "/projects/"
