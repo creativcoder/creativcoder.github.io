@@ -1,8 +1,8 @@
 ## Basic Configuration
 
-baseurl = "creativcoder.me"  
+baseurl = "#"  
 builddrafts = false
-canonifyurls = true
+canonifyurls = false
 languageCode = "en-US"
 
 contentdir = "content"
