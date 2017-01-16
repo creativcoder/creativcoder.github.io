@@ -1,0 +1,113 @@
++++
+draft = false
+showcomments = true
+categories = ["algorithms", "optimization", "beginner"]
+title = "Dynamic programming primer - A tutorial"
+showpagemeta = true
+tags = []
+slug = ""
+comments = false
+date = "2017-01-03T18:34:50+05:30"
+
++++
+
+Dynamic programming while being widely applicable to a lot of computer science problems is often found a bit complicated to understand at first but when approached in byte size chunks and hitting on the underlying principles we can understand them better.
+
+This article is aimed at beginner levels so experienced readers may not find it useful though i would love suggestions and improvements from experienced people.
+
+In this post, i'll try to introduce readers who are new to this algorithmic technique of problem solving that can really change the way you think about solving problems. It will give you the ability think problems bottom up rather than more natural and intuitive top down thinking that most of us use. Let me tell you that the bottom up thinking approach won't come readily from just solving one or two problems, you really have to practice lot of problems of this kind to wire it properly to your thinking style.
+
+I myself was a bit vague on the principles of dynamic programming but with dedicated readings from the last few months i have been able to make sense of DP and this blog post is a step towards consolidating my understanding.
+
+So with that intro aside, time to dive in. Let me describe the essense Dynamic Programming.
+
+Many other good blogs starts explaining dynamic programming by introducing the fibonacci sequence to the readers. We will eventually get there but before that i want to explore some more trivial example to really see the nature of problems that we encounter everyday and how it closely resembles the thinking behind dynamic programming.
+
+Dynamic programming can be seen in integer sequences as well. (From the perspective of an experienced DP guy, this is not a very convincing example as it does not have overlapping subproblems, but i wanted a more trivial example.)
+
+Consider a non-negative integer like 7.
+
+Let us ask ourselves how can we form the number 7 ?
+Although there are more than one possible answer to this. Lets take one solution to it:
+7 = 6 + 1.
+
+So you see 7 can be formed by taking the previous number 6 and adding 1 to it. Similary you can intuit that,
+6 can be formed by using 5 and adding 1 to it and so on.
+
+This brings us to the concept of a subproblem. 
+
+**Subproblems** - A subproblem S(n) is a self contained solution state towards a larger problem. In our previous little example on integers, the subproblem for getting the number 7 is: (Problem of getting the number 6) + 1. Similarly, Problem of getting the number 6: (Problem of getting number 5) + 1.
+
+To generalize, n can be solved by solving (n-1) and adding 1 to it. But in DP, we approach it from the opposite side. To get to the solution 7, we start with a base case solution S(0) =  0 (well zero can be constructed by having only 1 zero), then we construct the next solution to the subproblem S(1) = S[0] + 1. Then S(2) = S[1] + 1, then S(3) = S[2] + 1 until we reach S(7) = S[6] + 1. Notice the square brackets when we are building the next solution. It means that we are using the previous solution which was already calculated before.
+
+Now with the concept of a subproblems clear. Lets get to our fibonacci example which most of you should be familiar with:
+
+f(n) = f(n-1) + f(n-2)				where n^0 = 0 and n^1 = 1
+
+Lets map the concepts we learned from our previous example.
+
+Here n^0 and n^1 are base cases. f(n), is the instance of the problem we are trying to solve and by its definition f(n-1) and f(n-2) are the subproblems which when added gives the solution to f(n).
+
+And as one knows there is a straight forward recursive approach, to solve it.
+A python example:
+
+```
+
+def fib(n):
+	if n == 0 or n == 1:
+		return n
+	return fib(n-1)+fib(n-2)
+
+```
+
+If we explicitely list out the solution to f(7):
+
+f(7) = f(6) + f(5)
+		(A)    (B)
+
+Lets also expand A and B
+
+A: f(6) = f(5) + f(4)
+B: f(5) = f(4) + f(3)
+
+But we see that at each branch of the problem into two subproblems, we are recalcuting at least one thing in the next subproblem that we already calculated in previous levels. An example of this would be : f(5) is calculated in f(7) branching, but its also calculated in f(6) branching. And this redundant recalculation continues at all levels of branches, resulting in a worst case complexity of 2^n . And this solution would take very large amounts of time for queries such as f(40) or f(100).
+
+This fibonacci problem shows us two attributes which are characteristics for employing a DP solution to a problem:
+
+1) **Overlapping subproblems** - As explained above on the branching of function calls, we are re-calculating many things that have been calculated before. So fibonacci example shows that there are same subproblems that are overlapping or recalculated at many levels.
+
+2) **Optimal substructure** - This simply means that, optimal solutions to smaller sub problems gives the solution to the larger problem. The fibonacci example does help much in depicting this, but this can be seen in algorithms such as the Shortest Path Problem, where we must need a shortest path for the subproblems to get the overall shortest path.
+
+So a DP solution to the fibonacci problem would be to construct the solution optimally from the base cases and work our way up until we reach to a given n. This also has the benefit of caching our values, so that subsequent queries of < n on our solution would be O(1).
+
+```
+def fibonacci_dp(n, cache):
+	if n==0 or n==1:
+		cache[n]=n
+	else:
+		for i in range(2,n):
+			cache[i] = cache[i-1]+cache[i-2]
+	return cache[n]
+```
+
+So what did we just do, we just gave our method a cache to store the computed values. Then for the given query n, our cache method will return results from our cache rather than re-computing it. 
+
+So to summerize our understanding, Dynamic programming is:
+
+1) Splitting our problem into subproblem and identifying if the subproblems are overlapping.
+
+2) Solving the sub problems optimally and saving it and try it on a larger problem to see if we are getting the desired solution to the larger problem.
+
+DP is not some definite algorithm, but consider it as a meta algorithm that allows you to minimize the runtime complexity of your existing algorithm that you have thought of by identifying and eliminating redundant parts of it.
+
+_Richard Bellman_ who theorized DP in his paper describes it as a descision guiding principle in a problem where we have several states of a problem, and we wish to maximize the outcome of the problem. It is an algorithm optimization technique.
+
+If you want to dive deeper into the roots of it, consider reading this paper **http://smo.sogang.ac.kr/doc/bellman.pdf** by the well known Richard Bellman.
+
+So that was basically it about Dynamic programming. In the next post on this topic, we will see another DP problem by introducing the Coin Change problem.
+
+On a philosophical note:
+
+_"A complex entity is a combinatoric amalgamation of simple loosely coupled pieces"_ :)
+
+Thanks for reading.

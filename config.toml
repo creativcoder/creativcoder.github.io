@@ -1,18 +1,19 @@
 ## Basic Configuration
 
-baseurl = "#"  
+baseurl = "/"  
 builddrafts = false
 canonifyurls = false
 languageCode = "en-US"
+paginate = 6
 
 contentdir = "content"
 layoutdir = "layouts"
 publishdir = "public"
 
 author = "Rahul Sharma"
-title = "creativcoder"
+title = "creativcoder's blog"
 
-theme = "hugo-goa"
+theme = "bleak"
 
 ## Hugo Built-in Features
 disqusShortname = "creativcoder" # Comment out to disable Disqus.
@@ -22,15 +23,17 @@ enableRobotsTXT = true
 ## Site Settings
 [params]
 author = "Rahul Sharma"
-intro = "Curious"
-description = "Autodidact code tinkerer. Loves exploring the bleeding edge in tech"
 authorImage = "logo.jpg"
+intro = "Curious"
+cover = "/poly.png"
 dateFormat = "Jan 2, 2006"
+Subtitle = "Autodidact code tinkerer. Loves exploring the bleeding edge in tech."
+description = "This blog contains my thoughts and ideas about the fascinating world of computer science."
 
 ## Site Meta Settings
 [params.meta]
-description = "Simple minimalist theme"
-keywords = "minimalist,blog,goa,hugo,developer"
+description = "Bleak theme"
+keywords = "minimalist,flat,bleak,ghost"
 
 ## Social Accounts
 [params.social]
@@ -49,17 +52,21 @@ highlightJS = true
 
 ## Main Menu
 [[menu.main]]
-    name = "blog"
+    name = "Home"
+    identifier = "Home"
     weight = 100
-    identifier = "blog"
-    url = "/blog/"
+    url = "/"
 [[menu.main]]
-    name = "about"
+    name = "About"
     identifier = "about"
     weight = 200
     url = "/about/"
 [[menu.main]]
-    name = "projects"
-    identifier = "projects"
+    name = "Twitter: creativcoder"
     weight = 300
-    url = "/projects/"
+[[menu.main]]
+    name = "Github: creativcoder"
+    weight = 400
+[[menu.main]]
+    name = "IRC creativcoder@irc.mozilla.org"
+    weight = 500

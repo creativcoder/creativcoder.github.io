@@ -51,20 +51,20 @@ Execution Context:
 
 * The init phase:
 
-![alt init_phase](posts/service_worker/init_phase.jpg)
+![alt init_phase](img/init_phase.jpg)
 
 The constellation thread is the one that's created before any of the above mentioned threads. So it creates the required channels (here channel means creating a sender receiver pair for inter-thread communication) for SWM and passes the SWM's sender when the constellation creates the script thread which spawns the SWM thread. We also create a channel for the resource thread to communicate with constellation. This is needed so that the resource thread can ask for any custom response from SWM mediated by constellation.
 
 * The registration phase:
 
-![alt reg_phase](posts/service_worker/reg_phase.jpg)
+![alt reg_phase](img/reg_phase.jpg)
 
 Lets take an example of a url `https://example.com` where we register a SW over the scope: `/profile`.
 We register a Service Worker by calling `navigator.serviceWorker.register('sw.js', {scope: '/profile'});` which returns a registration object. This registration object is then stored in the ScriptThread's thread local storage. At this point the worker does not start controlling pages or listening to events; instead it forwards the attributes required to spawn service to the SWM which handles the initialization of ServiceWorkerGlobalScopes upon url navigations.
 
 * The network phase:
 
-![alt net_phase](posts/service_worker/net_phase.jpg)
+![alt net_phase](img/net_phase.jpg)
 
 When the browser is navigated to the url `https://example.com/profile` where the SW was registered the `http_loader`, sends a sender to the SWM, and asks whether the current load url has a running service worker that may have a custom response. Here the SWM forwards the network's sender to the running ServiceWorkerGlobalScope's event loop which then is able to reply with any custom response that is cached in.
 
