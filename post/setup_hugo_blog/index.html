@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<title>Creating a Hugo blog on Github pages workflow&middot; creativcoder&#39;s blog</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Rahul Sharma">
+	
+	
+	<meta name="generator" content="Hugo 0.21" />
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://creativcoder.github.io/css/main.css">
+
+	<!--Favicon-->
+	<link rel="shortcut icon" href="https://creativcoder.github.io/favicon.ico" type="image/x-icon">
+
+	<!-- RSS -->
+	
+
+	<!-- Font Awesome -->
+	<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<!-- Google Fonts -->
+	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+    <header class="site-header">
+	<div class="branding">
+		<a href="https://creativcoder.github.io/">
+		<img class="avatar" src="https://creativcoder.github.io/img/avatar.jpg" alt=""/>
+		</a>
+		<h1 class="site-title">
+			<a href="https://creativcoder.github.io/">creativcoder&#39;s blog</a>
+		</h1>
+	</div>
+	<nav class="site-nav">
+		<ul>
+	      	<li><a href="/about/"> About </a></li>
+
+	      	<li>
+	<a href="https://creativcoder.github.io/" title="">
+		<i class="fa fa-fw fa-home"></i>
+	</a>
+</li>
+
+<li>
+	<a href="https://creativcoder.github.io/index.xml" title="Subcribe">
+		<i class="fa fa-fw fa-rss"></i>
+	</a>
+</li>
+
+<li>
+	<a href="mailto:rsconceptx@gmail.com" title="Email">
+		<i class="fa fa-fw fa-envelope"></i>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://github.com/creativcoder" title="GitHub">
+		<i class="fa fa-fw fa-github"></i>
+	</a>
+</li>
+
+
+
+
+
+<li>
+	<a href="https://www.linkedin.com/in/creativcoder" title="LinkedIn">
+		<i class="fa fa-fw fa-linkedin"></i>
+	</a>
+</li>
+
+
+
+<li>
+	<a href="https://www.reddit.com/user/creativcoder" title="Reddit">
+		<i class="fa fa-fw fa-reddit"></i>
+	</a>
+</li>
+
+
+
+<li>
+	<a href="creativcoder" title="Stack Exchange">
+		<i class="fa fa-fw fa-stack-exchange"></i>
+	</a>
+</li>
+
+
+
+
+
+<li>
+	<a href="https://twitter.com/creativcoder" title="Twitter">
+		<i class="fa fa-fw fa-twitter"></i>
+	</a>
+</li>
+
+
+
+
+
+
+
+<li>
+	<a href="https://gitlab.com/creativcoder" title="Gitlab">
+		<i class="fa fa-fw fa-gitlab"></i>
+	</a>
+</li>
+
+	    </ul>
+	</nav>
+</header>
+
+
+    <div class="content">
+    <article>
+		<header>
+			<h1 class="title">Creating a Hugo blog on Github pages workflow</h1>
+			<p class="meta">
+    September 15, 2015 &middot; 4 minute read
+
+    
+        &middot; Tags:
+            <a href="https://creativcoder.github.io/tags/beginner">beginner</a>
+            , <a href="https://creativcoder.github.io/tags/blog">blog</a>
+            , <a href="https://creativcoder.github.io/tags/hugo">hugo</a>
+            , <a href="https://creativcoder.github.io/tags/setup">setup</a>
+            
+</p>
+
+		</header>
+
+	<section class="post-content">
+		
+
+<p>So, I migrated my blog to hugo; and after reading a few posts on setting up a new blog with Hugo,I found many of them were really not elaborate enough for newcomers to hugo, and so this post. Hugo is a really lean and fast static site generator written in Go. Now, ill give a high-level overview of how our blog will be setup. Inside our blog repo their will be two branches, once <code>source</code>, which will store only our posts in markdown and other configs and the other branch will be <code>master</code>, which will contain all files generated in the public folder by hugo.</p>
+
+<p>So here goes:</p>
+
+<h2 id="get-hugo">Get Hugo</h2>
+
+<p>The obvious step. Head over to the Hugo website and download the most recent release <a href="https://github.com/spf13/hugo/releases">here</a>.</p>
+
+<h2 id="make-your-home">Make your home</h2>
+
+<p>Our blog needs a place to stay, right. So, Create a repository on Github by your username (<code>&lt;username&gt;.github.io</code>). Then, create a folder on your local machine, with the same name and do a <code>git init</code> and then add your remote repo url which we created above with</p>
+
+<pre><code>git remote add origin https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git
+</code></pre>
+
+<h2 id="lets-hugo">Lets Hugo</h2>
+
+<p>In your local folder, to create a new hugo site; type:
+<code>hugo new site [path]</code>, the path is where you want to create your hugo site, which in our case is a <code>.</code> , since we&rsquo;re inside our blog folder.
+This will create a new hugo site with all the required directory structure.</p>
+
+<dl>
+<dt><code>&lt;username&gt;.github.io</code></dt>
+<dd>|&ndash;   <code>.git</code></dd>
+<dd>|&mdash;   <code>archetypes/</code></dd>
+<dd>|&mdash;   <code>content/</code></dd>
+<dd>|&mdash;   <code>data/</code></dd>
+<dd>|&mdash;   <code>layouts/</code></dd>
+<dd>|&mdash;   <code>static/</code></dd>
+<dd>|&mdash;   <code>config.toml</code></dd>
+</dl>
+
+<p>our blog posts in markdown syntax will reside at <code>content</code> and the <code>config.toml</code> contains site wide configurations, which we will customize soon.</p>
+
+<h2 id="embellishments">Embellishments</h2>
+
+<p>You want your blog, to be different from the usual, so Hugo has you covered. You can choose from a wide variety of themes developed by good open source guys, from the <a href="http://themes.gohugo.io">Hugo themes</a> repository, but while browsing through the themes section, i found the themes, don&rsquo;t have a consistent procedure for integrating the theme into their hugo blog, and some of them are missing their docs as well. So, here, ill pick the one i chose (<code>grayshade</code>) and will explain how to setup <code>greyshade</code> for your blog. Once you get the know-how of setting a single theme, then picking on others will be easy.</p>
+
+<p>We&rsquo;ll add the greyshade theme, as a submodule in our blog repository, so that in future if the creator of the theme makes new updates to the theme, we can be sure that all changes are synced, and can update the theme as well.
+You might ask what a submodule is ? Well a submodule in git is basically just a git repository (our theme) inside another git repository (our blog). I hope that makes sense. Git maintains a reference to the submodules in folder <code>.git/modules</code>. More on submodules <a href="http://blog.jacius.info/2009/08/09/your-git-submodule-and-you/">here</a>.</p>
+
+<p>First clone the greyshade <a href="https://github.com/cxfksword/greyshade">theme</a>
+repository by : <code>git submodule add https://github.com/cxfksword/greyshade themes/greyshade</code>.
+We have to copy the theme repo, inside a folder <code>themes</code> with a name <code>greyshade</code>.</p>
+
+<p>Now, remember about <code>config.toml</code> in our root dir, that is site wide configuration file. You can configure that, according to your own, by reading hugo docs, but the greyshade repo already has a template <code>config.toml</code> for us. So just look at their <a href="https://github.com/cxfksword/greyshade#setup">README.md</a>, and configure according to your own.</p>
+
+<h2 id="time-for-content">Time for Content</h2>
+
+<p>Now time for some actual content.</p>
+
+<p>Inside your blog repo, type <code>hugo new post/intro-post.md</code>. With that, hugo will generate a <code>intro-post.md</code> file with some metadata, like timestamps, titles etc., inside <code>content/post</code> directory. Now you can write your post in markdown syntax in <code>intro-post.md</code></p>
+
+<p>After you&rsquo;re done with that, remember to set <code>draft = false</code>. So that hugo will not ignore the post when its building the html files.</p>
+
+<p>Note: At this point, its a good idea to commit and push our blog repo to our Github. (We&rsquo;ll give our branch name <code>source</code>)
+So first do a <code>echo 'public' &gt;&gt; .gitignore</code>, since we dont want our public folder to be in our <code>source</code> branch.
+Then do, a <code>git checkout -b source</code>, followed by <code>git add -A</code>,
+then <code>git commit -m &quot;updated src blog&quot;</code>,
+finally <code>git push origin source</code>.</p>
+
+<h2 id="show-it-to-the-world">Show it to the world</h2>
+
+<p>So, you&rsquo;d like to show your shiny new blog post to the world !
+While still in our same repo, issue the command, <code>hugo --theme=greyshade</code>.
+With that, hugo will generate our site in the folder named <code>public</code>, and you can view the generated site on localhost using:
+<code>hugo serve --theme=greyshade</code>. So far so good.</p>
+
+<p>Now get inside the public folder and do a git init again here. This inner repository will go to our <code>master</code> branch on Github.</p>
+
+<p>Then, as before:
+<code>git add -A</code>
+<code>git commit -m &quot;published blog&quot;</code>
+<code>git push origin master</code></p>
+
+<p>Note: Don&rsquo;t forget to add the same remote url in this repo as well.</p>
+
+<p>And with that, you&rsquo;re blogging away, with hugo on <code>&lt;username&gt;.github.io</code>.</p>
+
+<p>I hope that helped. Let me know by comments.</p>
+
+
+		
+			<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'creativcoder';
+    var disqus_identifier = 'https:\/\/creativcoder.github.io\/post\/setup_hugo_blog\/';
+    var disqus_title = 'Creating a Hugo blog on Github pages workflow';
+    var disqus_url = 'https:\/\/creativcoder.github.io\/post\/setup_hugo_blog\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+		
+	</section>
+    </div>
+
+    <footer class="site-footer">
+	<p class="text">&copy; 2017 - Released under the MIT license<br>Powered by <a href="//gohugo.io/">Hugo</a> with the <a href="//github.com/digitalcraftsman/hugo-type-theme">Type Theme</a></p>
+</footer>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-87920648-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+</body>
+</html>

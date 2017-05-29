@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on creativcoder&#39;s blog</title>
+    <link>https://creativcoder.github.io/categories/</link>
+    <description>Recent content in Categories on creativcoder&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Released under the MIT license&lt;br&gt;Powered by [Hugo](//gohugo.io/) with the [Type Theme](//github.com/digitalcraftsman/hugo-type-theme)</copyright>
+    <lastBuildDate>Tue, 03 Jan 2017 18:34:50 +0530</lastBuildDate>
+    
+	<atom:link href="https://creativcoder.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Algorithms</title>
+      <link>https://creativcoder.github.io/categories/algorithms/</link>
+      <pubDate>Tue, 03 Jan 2017 18:34:50 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/categories/algorithms/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Beginner</title>
+      <link>https://creativcoder.github.io/categories/beginner/</link>
+      <pubDate>Tue, 03 Jan 2017 18:34:50 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/categories/beginner/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Blogs</title>
+      <link>https://creativcoder.github.io/categories/blogs/</link>
+      <pubDate>Tue, 15 Sep 2015 21:29:42 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/categories/blogs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Functional Programming</title>
+      <link>https://creativcoder.github.io/categories/functional-programming/</link>
+      <pubDate>Sun, 19 Jun 2016 22:36:08 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/categories/functional-programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Memory</title>
+      <link>https://creativcoder.github.io/categories/memory/</link>
+      <pubDate>Mon, 13 Mar 2017 23:25:02 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/categories/memory/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mozilla</title>
+      <link>https://creativcoder.github.io/categories/mozilla/</link>
+      <pubDate>Wed, 29 Jun 2016 23:25:02 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/categories/mozilla/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Optimization</title>
+      <link>https://creativcoder.github.io/categories/optimization/</link>
+      <pubDate>Tue, 03 Jan 2017 18:34:50 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/categories/optimization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Profiling</title>
+      <link>https://creativcoder.github.io/categories/profiling/</link>
+      <pubDate>Mon, 13 Mar 2017 23:25:02 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/categories/profiling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Protocols</title>
+      <link>https://creativcoder.github.io/categories/protocols/</link>
+      <pubDate>Tue, 16 Feb 2016 16:32:34 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/categories/protocols/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rust</title>
+      <link>https://creativcoder.github.io/categories/rust/</link>
+      <pubDate>Mon, 13 Mar 2017 23:25:02 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/categories/rust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Valgrind</title>
+      <link>https://creativcoder.github.io/categories/valgrind/</link>
+      <pubDate>Mon, 13 Mar 2017 23:25:02 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/categories/valgrind/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web</title>
+      <link>https://creativcoder.github.io/categories/web/</link>
+      <pubDate>Fri, 20 May 2016 15:28:15 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/categories/web/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

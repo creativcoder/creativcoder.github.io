@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Details on creativcoder&#39;s blog</title>
+    <link>https://creativcoder.github.io/tags/details/</link>
+    <description>Recent content in Details on creativcoder&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Released under the MIT license&lt;br&gt;Powered by [Hugo](//gohugo.io/) with the [Type Theme](//github.com/digitalcraftsman/hugo-type-theme)</copyright>
+    <lastBuildDate>Tue, 16 Feb 2016 16:32:34 +0530</lastBuildDate>
+    
+	<atom:link href="https://creativcoder.github.io/tags/details/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Understanding the HTTP Protocol in simple terms (part 1: The HTTP request)</title>
+      <link>https://creativcoder.github.io/post/understanding_http_part_one/</link>
+      <pubDate>Tue, 16 Feb 2016 16:32:34 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/post/understanding_http_part_one/</guid>
+      <description>This post, will discuss, about the abstraction that, the &amp;lsquo;user facing&amp;rsquo; internet stands on. I have seen many of my peers ask from time to time, what is http, and how it works. Also as a web developer understanding HTTP protocol is an essential asset to be able to think in a way, as to how to architecture your web apps, so that it follows the semantics of HTTP.
+I intend to make things less vague, from what i have learned.</description>
+    </item>
+    
+  </channel>
+</rss>

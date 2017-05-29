@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Beginner on creativcoder&#39;s blog</title>
+    <link>https://creativcoder.github.io/categories/beginner/</link>
+    <description>Recent content in Beginner on creativcoder&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Released under the MIT license&lt;br&gt;Powered by [Hugo](//gohugo.io/) with the [Type Theme](//github.com/digitalcraftsman/hugo-type-theme)</copyright>
+    <lastBuildDate>Tue, 03 Jan 2017 18:34:50 +0530</lastBuildDate>
+    
+	<atom:link href="https://creativcoder.github.io/categories/beginner/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Dynamic programming primer</title>
+      <link>https://creativcoder.github.io/post/dynamic_programming_primer/</link>
+      <pubDate>Tue, 03 Jan 2017 18:34:50 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/post/dynamic_programming_primer/</guid>
+      <description>Dynamic programming while being widely applicable to a lot of computer science problems is often found a bit complicated to understand at first but when approached in byte size chunks and appreciating the underlying principles we can understand them better.
+This article is aimed at beginner levels so experienced readers may not find it useful though i would love suggestions and improvements from experienced people.
+In this post, i&amp;rsquo;ll try to introduce readers who are new to this algorithmic technique of problem solving that can really change the way you think about solving problems.</description>
+    </item>
+    
+  </channel>
+</rss>

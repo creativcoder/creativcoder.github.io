@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mozilla on creativcoder&#39;s blog</title>
+    <link>https://creativcoder.github.io/tags/mozilla/</link>
+    <description>Recent content in Mozilla on creativcoder&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Released under the MIT license&lt;br&gt;Powered by [Hugo](//gohugo.io/) with the [Type Theme](//github.com/digitalcraftsman/hugo-type-theme)</copyright>
+    <lastBuildDate>Tue, 17 Jan 2017 01:34:50 +0530</lastBuildDate>
+    
+	<atom:link href="https://creativcoder.github.io/tags/mozilla/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Helping new Rustacians in 2017</title>
+      <link>https://creativcoder.github.io/post/rust_in_2017/</link>
+      <pubDate>Tue, 17 Jan 2017 01:34:50 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/post/rust_in_2017/</guid>
+      <description>Its almost been a year and a half with Rust and it has been a productive learning experience. Coming as a newbie programmer it made me a lot more insightful and aware of what the knowledge of systems programming really entails and the nuances of it, thanks to the amazing documentation, blogs and community altogether. Maintaining a good community around a language is a hard thing and Rust sets a very good example.</description>
+    </item>
+    
+  </channel>
+</rss>

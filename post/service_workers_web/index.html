@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<title>Introduction to the Service Workers&middot; creativcoder&#39;s blog</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Rahul Sharma">
+	
+	
+	<meta name="generator" content="Hugo 0.21" />
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://creativcoder.github.io/css/main.css">
+
+	<!--Favicon-->
+	<link rel="shortcut icon" href="https://creativcoder.github.io/favicon.ico" type="image/x-icon">
+
+	<!-- RSS -->
+	
+
+	<!-- Font Awesome -->
+	<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<!-- Google Fonts -->
+	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+    <header class="site-header">
+	<div class="branding">
+		<a href="https://creativcoder.github.io/">
+		<img class="avatar" src="https://creativcoder.github.io/img/avatar.jpg" alt=""/>
+		</a>
+		<h1 class="site-title">
+			<a href="https://creativcoder.github.io/">creativcoder&#39;s blog</a>
+		</h1>
+	</div>
+	<nav class="site-nav">
+		<ul>
+	      	<li><a href="/about/"> About </a></li>
+
+	      	<li>
+	<a href="https://creativcoder.github.io/" title="">
+		<i class="fa fa-fw fa-home"></i>
+	</a>
+</li>
+
+<li>
+	<a href="https://creativcoder.github.io/index.xml" title="Subcribe">
+		<i class="fa fa-fw fa-rss"></i>
+	</a>
+</li>
+
+<li>
+	<a href="mailto:rsconceptx@gmail.com" title="Email">
+		<i class="fa fa-fw fa-envelope"></i>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://github.com/creativcoder" title="GitHub">
+		<i class="fa fa-fw fa-github"></i>
+	</a>
+</li>
+
+
+
+
+
+<li>
+	<a href="https://www.linkedin.com/in/creativcoder" title="LinkedIn">
+		<i class="fa fa-fw fa-linkedin"></i>
+	</a>
+</li>
+
+
+
+<li>
+	<a href="https://www.reddit.com/user/creativcoder" title="Reddit">
+		<i class="fa fa-fw fa-reddit"></i>
+	</a>
+</li>
+
+
+
+<li>
+	<a href="creativcoder" title="Stack Exchange">
+		<i class="fa fa-fw fa-stack-exchange"></i>
+	</a>
+</li>
+
+
+
+
+
+<li>
+	<a href="https://twitter.com/creativcoder" title="Twitter">
+		<i class="fa fa-fw fa-twitter"></i>
+	</a>
+</li>
+
+
+
+
+
+
+
+<li>
+	<a href="https://gitlab.com/creativcoder" title="Gitlab">
+		<i class="fa fa-fw fa-gitlab"></i>
+	</a>
+</li>
+
+	    </ul>
+	</nav>
+</header>
+
+
+    <div class="content">
+    <article>
+		<header>
+			<h1 class="title">Introduction to the Service Workers</h1>
+			<p class="meta">
+    May 20, 2016 &middot; 3 minute read
+
+    
+        &middot; Tags:
+            <a href="https://creativcoder.github.io/tags/gsoc">gsoc</a>
+            , <a href="https://creativcoder.github.io/tags/open-source">open-source</a>
+            , <a href="https://creativcoder.github.io/tags/service-workers">service-workers</a>
+            , <a href="https://creativcoder.github.io/tags/web">web</a>
+            
+</p>
+
+		</header>
+
+	<section class="post-content">
+		
+
+<p>This post discusses about a web platform <a href="https://slightlyoff.github.io/ServiceWorker/spec/service_worker/">specification</a>, that aims to provide a programmatic control over web pages, by providing a user driven api, which can be used for many purposes like; to cache data for offline usage, control outgoing network requests, provide a platform for implementing push notifcations, and for making a <a href="https://developers.google.com/web/progressive-web-apps/">progressive web app</a>. Currently, I am working with Mozilla Research, on implementing the foundations for the service worker specification in Servo Browser engine as part of my Gsoc project (mentored by <a href="http://github.com/jdm">Josh</a>). Major browser vendors already have suppport of them, whose status can be tracked at <a href="http://caniuse.com/#feat=serviceworkers">caniuse</a>. So, It would be great to have this feature in Servo as well.</p>
+
+<p>So to begin with, lets answer the question:</p>
+
+<h4 id="what-are-service-workers">What are service workers ?</h4>
+
+<p>First of all, its a derivative of web workers, if you&rsquo;re familiar <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API">with them</a>, and shares identity with shared workers. They are basically event-driven background running scripts (as a seperate thread in Servo and in other browser engines), that run in time limited manner and can monitor network events made from web pages.</p>
+
+<p>The script&rsquo;s lifetime isn&rsquo;t determined by the the page or the client which registered it, but with various events, that happen during its lifecycle, such as <code>installed</code>, <code>activate</code>, <code>fetch</code>, etc. This property is an important thing to note, which means that we should not do do things inside our worker script, which tries to persist some data or state. Service Workers should be treated as a <code>stateless</code> script, which starts and acts only when events occur.</p>
+
+<h4 id="what-are-they-good-for-and-why-would-i-use-it">What are they good for and why would i use it ?</h4>
+
+<p>To answer this and to not make this post longer, i would point towards these great Google I/O&rsquo;16 talks,
+which really shows their capabilities. The web platform gets a whole new transformation with them when used correctly.</p>
+
+<ul>
+<li><p><a href="https://www.youtube.com/watch?v=fGTUIlEM0m8">ServiceWorkers at scale</a></p></li>
+
+<li><p><a href="https://www.youtube.com/watch?v=cmGr0RszHc8">Building offline-first Progressive Web Apps</a></p></li>
+</ul>
+
+<h4 id="how-do-they-work">How do they work ?</h4>
+
+<p>As said, above that service workers basically act as a network proxy listening to network events made from page, so they must be registered first, to listen to network events from a page. So jake archibald the co-creator of the service workers specification has a really nice introduction to <a href="https://jakearchibald.com/2014/using-serviceworker-today/">using the service workers today</a>.</p>
+
+<p>The next post will discuss on the initial progress on implementation of ServiceWorkers in Servo. The current implementation, does not implement them using promises, as promises support is yet to be integrated in Servo. This will eventually, get transitioned to promise based implementation as per the spec standards when promises support arrives. I have a tracking <a href="https://github.com/creativcoder/gsoc16">repository</a>, which contains my notes and roadmap of the ServiceWorker integration in Servo.</p>
+
+
+		
+			<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'creativcoder';
+    var disqus_identifier = 'https:\/\/creativcoder.github.io\/post\/service_workers_web\/';
+    var disqus_title = 'Introduction to the Service Workers';
+    var disqus_url = 'https:\/\/creativcoder.github.io\/post\/service_workers_web\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+		
+	</section>
+    </div>
+
+    <footer class="site-footer">
+	<p class="text">&copy; 2017 - Released under the MIT license<br>Powered by <a href="//gohugo.io/">Hugo</a> with the <a href="//github.com/digitalcraftsman/hugo-type-theme">Type Theme</a></p>
+</footer>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-87920648-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+</body>
+</html>
