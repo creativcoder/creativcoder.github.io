@@ -6,7 +6,11 @@
 			<div class="home">
 
 				{{ if .Site.Params.headerText }}
-				<div class="call-out" style="background-image: url('{{ .Site.BaseURL }}/img/{{ .Site.Params.headerImage }}')">
+				<!-- <div class="call-out" style="background-image: url('{{ .Site.BaseURL }}/img/{{ .Site.Params.headerImage }}')">
+					{{ .Site.Params.headerText | markdownify }}
+				</div> -->
+				<!-- Use remote urls in css background -->
+				<div class="call-out" style="background-image: url('{{ .Site.Params.headerImage }}')">
 					{{ .Site.Params.headerText | markdownify }}
 				</div>
 				{{ end }}

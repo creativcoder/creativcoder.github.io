@@ -2,6 +2,7 @@
 date = "2016-06-09T23:35:16-05:30"
 draft = false
 title = "Post community bonding period with Servo- GSoC'16"
+featureimage = "https://propakistani.pk/wp-content/uploads/2017/03/Google-Summer-of-Code-March-3-2017-800x450.png"
 categories = ["mozilla"]
 comments = true
 showpagemeta = true

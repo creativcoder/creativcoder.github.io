@@ -1,6 +1,6 @@
 +++
 date = "2017-03-13T23:25:02+05:30"
-featureimage = "img/ffi.jpg"
+featureimage = "http://i.imgur.com/wW6BXKg.jpg"
 draft = false
 title = "Valgrind with Rust - Checking memory leaks in your ffi library"
 categories = ["profiling", "rust", "memory", "valgrind"]

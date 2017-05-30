@@ -4,7 +4,7 @@ showcomments = true
 categories = ["algorithms", "optimization", "beginner"]
 title = "Dynamic programming primer"
 description = "An intuitive guide on the basics"
-featureimage = "img/dynamic.jpg"
+featureimage = "http://i.imgur.com/IaiXuwh.jpg"
 showpagemeta = true
 tags = []
 slug = ""
@@ -13,11 +13,9 @@ date = "2017-01-03T18:34:50+05:30"
 
 +++
 
-Dynamic programming while being widely applicable to a lot of computer science problems is often found a bit complicated to understand at first but when approached in byte size chunks and appreciating the underlying principles we can understand them better.
+Dynamic programming while being widely applicable to a lot of computer science problems is often talked about being complicated to understand and so this post tries to uncover the very basic ideas behind them. This article is aimed at beginner levels so experienced readers may not find it useful though i would love suggestions and improvements from experienced people.
 
-This article is aimed at beginner levels so experienced readers may not find it useful though i would love suggestions and improvements from experienced people.
-
-In this post, i'll try to introduce readers who are new to this algorithmic technique of problem solving that can really change the way you think about solving problems. It will give you the ability think problems bottom up rather than more natural and intuitive top down thinking that most of us use. Let me tell you that the bottom up thinking approach won't come readily from just solving one or two problems, you really have to practice lot of problems of this kind to wire it properly to your thinking style.
+I'll try to introduce readers who are new to DP technique of problem solving starting with a very trivial example. DP gives you the ability think problems bottom up rather than more natural and intuitive top down thinking that most of us use. Let me tell you that the bottom up thinking approach won't come readily from just solving one or two problems, you really have to practice lot of problems of this kind to wire it properly to your thinking style and even prior to solving problems using DP, we should know one thing that not all problems exhibit a DP based solution the reasons for which you discover on reading below.
 
 I myself was a bit vague on the principles of dynamic programming but with dedicated readings from the last few months i have been able to make sense of DP and this blog post is a step towards consolidating my understanding.
 

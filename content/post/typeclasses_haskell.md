@@ -3,6 +3,7 @@ date = "2016-06-19T22:36:08+05:30"
 draft = false
 title = "A short intro to type classes in Haskell"
 categories = ["functional-programming"]
+featureimage = "https://pbs.twimg.com/media/Cx6pdeFWEAAdop5.png"
 comments = true
 showpagemeta = true
 slug = ""

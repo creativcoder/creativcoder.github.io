@@ -3,6 +3,7 @@ date = "2016-05-20T15:28:15+05:30"
 draft = false
 title = "Introduction to the Service Workers"
 categories = ["web"]
+featureimage = "http://i.imgur.com/gv3aU5s.jpg"
 comments = true
 showpagemeta = true
 slug = ""

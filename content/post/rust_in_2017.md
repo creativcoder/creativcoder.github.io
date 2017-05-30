@@ -2,7 +2,7 @@
 draft = false
 showcomments = true
 tags = ["open source", "mozilla", "rust"]
-featureimage = "img/crab.jpg"
+featureimage = "http://i.imgur.com/D957yod.jpg"
 title = "Helping new Rustacians in 2017"
 showpagemeta = true
 date = "2017-01-17T01:34:50+05:30"

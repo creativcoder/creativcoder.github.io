@@ -22,10 +22,10 @@ paginate = 10
 	# or use Gravatar by adding your email address to generate a unique avatar
 	# gravatar = "rsconceptx@gmail.com"
 
-	headerText = "<br><br><br>Autodidact code tinkerer. Loves exploring the bleeding edge in tech.<br><br><br>"
+	headerText = "<br><br><br> thoughts.iter().map(|code|) <br><br><br>"
 	# To add a header background to the main site, save your image under static/img/.
 	# If no image path is provided, a orange background will be shown instead.
-	headerImage = "silver_dark.jpg"
+	headerImage = "http://i.imgur.com/0u3RQeg.jpg"
 	copyright = "Released under the MIT license<br>Powered by [Hugo](//gohugo.io/) with the [Type Theme](//github.com/digitalcraftsman/hugo-type-theme)"
 
 
@@ -42,12 +42,10 @@ paginate = 10
 		github = "creativcoder"
 		linkedin = "creativcoder"
 		pinterest = ""
-		reddit = "creativcoder"
 		soundcloud = ""
 		stackexchange = "creativcoder"
 		steam = ""
 		tumblr = ""
 		twitter = "creativcoder"
 		wordpress = ""
-		gitlab = "creativcoder"
 		trello = ""

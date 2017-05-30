@@ -1,0 +1,28 @@
+@media only screen and (max-width: 500px) {
+    h1 {
+        font-size: 1.3em;
+    }
+    p.meta {
+        font-size: 0.7em;
+    }
+}
+
+img {
+    padding: 10px;
+    display: block;
+    margin:auto;
+}
+
+body {
+    font-size: 22px;
+    font-family: 'Chivo', sans-serif;
+}
+
+h1 {
+    font-family: 'Courgette', cursive;
+}
+
+.call-out {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 39px;
+}
