@@ -7,7 +7,7 @@ categories = ["profiling", "rust", "memory", "valgrind"]
 comments = true
 slug = ""
 tags = ["community", "rustox", "rust", "meetup", "2017"]
-description = "A quick guide on using Valgrind on Rust code"
+description = "a blog post on the experience"
 
 +++
 
@@ -26,7 +26,7 @@ The audience of the meetup were people coming from imperative programming backgr
 
 As i came from a python background and got started into rust some 2 years back, I was asked to share experiences of a newbie moving from a dynamic, managed language as python is; to a statically typed, granular control oriented language that is Rust. Key points to mention would be:
 
-* It is time consuming to learn rust (6 months on average for someone coming from dynamically typed and imperative background), because you will be facing with topics that you didn't had to care about and also some functional programming concepts which you'll have to grok along the way.
+* It takes time to learn rust (6 months on average to be really comfortable, for someone coming from dynamically typed and imperative background), because you will be facing with topics that you didn't had to care about and also some functional programming concepts which you'll have to grok along the way.
 
 * If you have functional programming background then it would take around 2 weeks to get comfortable with syntax. I realized this when i started reading more on haskell, type theory and category theory. So having a fp background will help.
 
