@@ -18,9 +18,8 @@
       <pubDate>Tue, 03 Jan 2017 18:34:50 +0530</pubDate>
       
       <guid>https://creativcoder.github.io/post/dynamic_programming_primer/</guid>
-      <description>Dynamic programming while being widely applicable to a lot of computer science problems is often found a bit complicated to understand at first but when approached in byte size chunks and appreciating the underlying principles we can understand them better.
-This article is aimed at beginner levels so experienced readers may not find it useful though i would love suggestions and improvements from experienced people.
-In this post, i&amp;rsquo;ll try to introduce readers who are new to this algorithmic technique of problem solving that can really change the way you think about solving problems.</description>
+      <description>Dynamic programming while being widely applicable to a lot of computer science problems is often talked about being complicated to understand and so this post tries to uncover the very basic ideas behind them. This article is aimed at beginner levels so experienced readers may not find it useful though i would love suggestions and improvements from experienced people.
+I&amp;rsquo;ll try to introduce readers who are new to DP technique of problem solving starting with a very trivial example.</description>
     </item>
     
   </channel>

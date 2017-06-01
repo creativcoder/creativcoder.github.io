@@ -11,6 +11,7 @@
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="https://creativcoder.github.io/css/main.css">
+	<link rel="stylesheet" href="https://creativcoder.github.io/css/responsive.css">
 
 	<!--Favicon-->
 	<link rel="shortcut icon" href="https://creativcoder.github.io/favicon.ico" type="image/x-icon">
@@ -22,12 +23,17 @@
 	<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 	<!-- Google Fonts -->
-	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css">
+	
+	<link href="https://fonts.googleapis.com/css?family=Chivo:italic" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
 
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
+
+<link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
 
 <body>
     <header class="site-header">
@@ -41,7 +47,7 @@
 	</div>
 	<nav class="site-nav">
 		<ul>
-	      	<li><a href="/about/"> About </a></li>
+	      	<li><a href="/about/"> :: whoami </a></li>
 
 	      	<li>
 	<a href="https://creativcoder.github.io/" title="">
@@ -89,11 +95,7 @@
 
 
 
-<li>
-	<a href="https://www.reddit.com/user/creativcoder" title="Reddit">
-		<i class="fa fa-fw fa-reddit"></i>
-	</a>
-</li>
+
 
 
 
@@ -119,11 +121,7 @@
 
 
 
-<li>
-	<a href="https://gitlab.com/creativcoder" title="Gitlab">
-		<i class="fa fa-fw fa-gitlab"></i>
-	</a>
-</li>
+
 
 	    </ul>
 	</nav>
@@ -190,7 +188,7 @@ The Script Thread is the one that holds the DOM for a document loaded in window 
 <li>The init phase:</li>
 </ul>
 
-<p><img src="/img/init_phase.jpg" alt="alt init_phase" /></p>
+<p><img src="http://i.imgur.com/rAv1za8.jpg" alt="alt init_phase" /></p>
 
 <p>The constellation thread is the one that&rsquo;s created before any of the above mentioned threads. So it creates the required channels (here channel means creating a sender receiver pair for inter-thread communication) for SWM and passes the SWM&rsquo;s sender when the constellation creates the script thread which spawns the SWM thread. We also create a channel for the resource thread to communicate with constellation. This is needed so that the resource thread can ask for any custom response from SWM mediated by constellation.</p>
 
@@ -198,7 +196,7 @@ The Script Thread is the one that holds the DOM for a document loaded in window 
 <li>The registration phase:</li>
 </ul>
 
-<p><img src="/img/reg_phase.jpg" alt="alt reg_phase" /></p>
+<p><img src="http://i.imgur.com/lWJVImJ.jpg" alt="alt reg_phase" /></p>
 
 <p>Lets take an example of a url <code>https://example.com</code> where we register a SW over the scope: <code>/profile</code>.
 We register a Service Worker by calling <code>navigator.serviceWorker.register('sw.js', {scope: '/profile'});</code> which returns a registration object. This registration object is then stored in the ScriptThread&rsquo;s thread local storage. At this point the worker does not start controlling pages or listening to events; instead it forwards the attributes required to spawn service to the SWM which handles the initialization of ServiceWorkerGlobalScopes upon url navigations.</p>
@@ -207,7 +205,7 @@ We register a Service Worker by calling <code>navigator.serviceWorker.register('
 <li>The network phase:</li>
 </ul>
 
-<p><img src="/img/net_phase.jpg" alt="alt net_phase" /></p>
+<p><img src="http://i.imgur.com/xH9HrTR.jpg" alt="alt net_phase" /></p>
 
 <p>When the browser is navigated to the url <code>https://example.com/profile</code> where the SW was registered the <code>http_loader</code>, sends a sender to the SWM, and asks whether the current load url has a running service worker that may have a custom response. Here the SWM forwards the network&rsquo;s sender to the running ServiceWorkerGlobalScope&rsquo;s event loop which then is able to reply with any custom response that is cached in.</p>
 

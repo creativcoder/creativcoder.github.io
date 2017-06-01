@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MIT license&lt;br&gt;Powered by [Hugo](//gohugo.io/) with the [Type Theme](//github.com/digitalcraftsman/hugo-type-theme)</copyright>
-    <lastBuildDate>Mon, 13 Mar 2017 23:25:02 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 01 Jun 2017 23:25:02 +0530</lastBuildDate>
     
 	<atom:link href="https://creativcoder.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Meet rustox ! Rust community at Bangalore</title>
+      <link>https://creativcoder.github.io/post/rust_community_bangalore/</link>
+      <pubDate>Thu, 01 Jun 2017 23:25:02 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/post/rust_community_bangalore/</guid>
+      <description>So another rust-lang community got added to the Users group. This time in Bangalore. Its a great opportunity for people interested in learning more about the language and also for rustaceans like us to spread awareness about the benefits of adopting rust to their toolbelt as a systems language.
+So at the meetup we started; celebrating 1.0 (May 15) stable release of Rust by cutting the cake. Then we got delivered an awesome pitch by Saifi introducing what rust has to offer, what improvements it brings over other languages, what redundancies it resolves and why one should invest time in learning it.</description>
+    </item>
     
     <item>
       <title>Valgrind with Rust - Checking memory leaks in your ffi library</title>
@@ -36,9 +46,8 @@
       <pubDate>Tue, 03 Jan 2017 18:34:50 +0530</pubDate>
       
       <guid>https://creativcoder.github.io/post/dynamic_programming_primer/</guid>
-      <description>Dynamic programming while being widely applicable to a lot of computer science problems is often found a bit complicated to understand at first but when approached in byte size chunks and appreciating the underlying principles we can understand them better.
-This article is aimed at beginner levels so experienced readers may not find it useful though i would love suggestions and improvements from experienced people.
-In this post, i&amp;rsquo;ll try to introduce readers who are new to this algorithmic technique of problem solving that can really change the way you think about solving problems.</description>
+      <description>Dynamic programming while being widely applicable to a lot of computer science problems is often talked about being complicated to understand and so this post tries to uncover the very basic ideas behind them. This article is aimed at beginner levels so experienced readers may not find it useful though i would love suggestions and improvements from experienced people.
+I&amp;rsquo;ll try to introduce readers who are new to DP technique of problem solving starting with a very trivial example.</description>
     </item>
     
     <item>
@@ -122,12 +131,12 @@ I intend to make things less vague, from what i have learned.</description>
     </item>
     
     <item>
-      <title>About</title>
+      <title>:: whoami</title>
       <link>https://creativcoder.github.io/about/</link>
       <pubDate>Thu, 23 Jul 2015 00:00:00 +0000</pubDate>
       
       <guid>https://creativcoder.github.io/about/</guid>
-      <description>Rahul Sharma
+      <description>Rahul Sharma Autodidact code tinkerer. Loves exploring the bleeding edge in tech.
 Rahul is passionately curious about computer science and programming. A believer in Mozilla&amp;rsquo;s vision of an Open Web. Currently works at AtherEnergy where he is building resilient cloud infra for smart scooters. He also contributes to Servo, rustc, and other projects in the Rust Community. His interests include systems programming, realtime web technologies, compilers and type theory.</description>
     </item>
     

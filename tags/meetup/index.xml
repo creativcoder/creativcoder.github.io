@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Meetup on creativcoder&#39;s blog</title>
+    <link>https://creativcoder.github.io/tags/meetup/</link>
+    <description>Recent content in Meetup on creativcoder&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Released under the MIT license&lt;br&gt;Powered by [Hugo](//gohugo.io/) with the [Type Theme](//github.com/digitalcraftsman/hugo-type-theme)</copyright>
+    <lastBuildDate>Thu, 01 Jun 2017 23:25:02 +0530</lastBuildDate>
+    
+	<atom:link href="https://creativcoder.github.io/tags/meetup/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Meet rustox ! Rust community at Bangalore</title>
+      <link>https://creativcoder.github.io/post/rust_community_bangalore/</link>
+      <pubDate>Thu, 01 Jun 2017 23:25:02 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/post/rust_community_bangalore/</guid>
+      <description>So another rust-lang community got added to the Users group. This time in Bangalore. Its a great opportunity for people interested in learning more about the language and also for rustaceans like us to spread awareness about the benefits of adopting rust to their toolbelt as a systems language.
+So at the meetup we started; celebrating 1.0 (May 15) stable release of Rust by cutting the cake. Then we got delivered an awesome pitch by Saifi introducing what rust has to offer, what improvements it brings over other languages, what redundancies it resolves and why one should invest time in learning it.</description>
+    </item>
+    
+  </channel>
+</rss>

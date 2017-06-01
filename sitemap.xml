@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://creativcoder.github.io/post/rust_community_bangalore/</loc>
+    <lastmod>2017-06-01T23:25:02+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://creativcoder.github.io/post/checking_memory_leaks_in_rust_ffi/</loc>
     <lastmod>2017-03-13T23:25:02+05:30</lastmod>
   </url>
@@ -63,6 +68,12 @@
   </url>
   
   <url>
+    <loc>https://creativcoder.github.io/tags/2017/</loc>
+    <lastmod>2017-06-01T23:25:02+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://creativcoder.github.io/categories/algorithms/</loc>
     <lastmod>2017-01-03T18:34:50+05:30</lastmod>
     <priority>0</priority>
@@ -95,6 +106,12 @@
   <url>
     <loc>https://creativcoder.github.io/categories/</loc>
     <lastmod>2017-01-03T18:34:50+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://creativcoder.github.io/tags/community/</loc>
+    <lastmod>2017-06-01T23:25:02+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -141,6 +158,12 @@
   </url>
   
   <url>
+    <loc>https://creativcoder.github.io/tags/meetup/</loc>
+    <lastmod>2017-06-01T23:25:02+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://creativcoder.github.io/tags/memory/</loc>
     <lastmod>2017-03-13T23:25:02+05:30</lastmod>
     <priority>0</priority>
@@ -148,7 +171,7 @@
   
   <url>
     <loc>https://creativcoder.github.io/categories/memory/</loc>
-    <lastmod>2017-03-13T23:25:02+05:30</lastmod>
+    <lastmod>2017-06-01T23:25:02+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -178,7 +201,7 @@
   
   <url>
     <loc>https://creativcoder.github.io/post/</loc>
-    <lastmod>2017-03-13T23:25:02+05:30</lastmod>
+    <lastmod>2017-06-01T23:25:02+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -190,7 +213,7 @@
   
   <url>
     <loc>https://creativcoder.github.io/categories/profiling/</loc>
-    <lastmod>2017-03-13T23:25:02+05:30</lastmod>
+    <lastmod>2017-06-01T23:25:02+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -208,13 +231,19 @@
   
   <url>
     <loc>https://creativcoder.github.io/tags/rust/</loc>
-    <lastmod>2017-03-13T23:25:02+05:30</lastmod>
+    <lastmod>2017-06-01T23:25:02+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://creativcoder.github.io/categories/rust/</loc>
-    <lastmod>2017-03-13T23:25:02+05:30</lastmod>
+    <lastmod>2017-06-01T23:25:02+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://creativcoder.github.io/tags/rustox/</loc>
+    <lastmod>2017-06-01T23:25:02+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -238,7 +267,7 @@
   
   <url>
     <loc>https://creativcoder.github.io/tags/</loc>
-    <lastmod>2015-09-15T21:29:42+05:30</lastmod>
+    <lastmod>2017-06-01T23:25:02+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -256,7 +285,7 @@
   
   <url>
     <loc>https://creativcoder.github.io/categories/valgrind/</loc>
-    <lastmod>2017-03-13T23:25:02+05:30</lastmod>
+    <lastmod>2017-06-01T23:25:02+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -274,7 +303,7 @@
   
   <url>
     <loc>https://creativcoder.github.io/</loc>
-    <lastmod>2017-03-13T23:25:02+05:30</lastmod>
+    <lastmod>2017-06-01T23:25:02+05:30</lastmod>
     <priority>0</priority>
   </url>
   

@@ -11,6 +11,7 @@
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="https://creativcoder.github.io/css/main.css">
+	<link rel="stylesheet" href="https://creativcoder.github.io/css/responsive.css">
 
 	<!--Favicon-->
 	<link rel="shortcut icon" href="https://creativcoder.github.io/favicon.ico" type="image/x-icon">
@@ -22,12 +23,17 @@
 	<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 	<!-- Google Fonts -->
-	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css">
+	
+	<link href="https://fonts.googleapis.com/css?family=Chivo:italic" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
 
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
+
+<link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
 
 <body>
     <header class="site-header">
@@ -41,7 +47,7 @@
 	</div>
 	<nav class="site-nav">
 		<ul>
-	      	<li><a href="/about/"> About </a></li>
+	      	<li><a href="/about/"> :: whoami </a></li>
 
 	      	<li>
 	<a href="https://creativcoder.github.io/" title="">
@@ -89,11 +95,7 @@
 
 
 
-<li>
-	<a href="https://www.reddit.com/user/creativcoder" title="Reddit">
-		<i class="fa fa-fw fa-reddit"></i>
-	</a>
-</li>
+
 
 
 
@@ -119,11 +121,7 @@
 
 
 
-<li>
-	<a href="https://gitlab.com/creativcoder" title="Gitlab">
-		<i class="fa fa-fw fa-gitlab"></i>
-	</a>
-</li>
+
 
 	    </ul>
 	</nav>
@@ -132,16 +130,14 @@
 
     <div class="content">
     <article class="feature-image">
-		<header style="background-image: url('https://creativcoder.github.io/img/dynamic.jpg')">
+		<header style="background-image: url('http://i.imgur.com/IaiXuwh.jpg'")>
 			<h1 class="title">Dynamic programming primer</h1>
 		</header>
 
 	<section class="post-content">
-		<p>Dynamic programming while being widely applicable to a lot of computer science problems is often found a bit complicated to understand at first but when approached in byte size chunks and appreciating the underlying principles we can understand them better.</p>
+		<p>Dynamic programming while being widely applicable to a lot of computer science problems is often talked about being complicated to understand and so this post tries to uncover the very basic ideas behind them. This article is aimed at beginner levels so experienced readers may not find it useful though i would love suggestions and improvements from experienced people.</p>
 
-<p>This article is aimed at beginner levels so experienced readers may not find it useful though i would love suggestions and improvements from experienced people.</p>
-
-<p>In this post, i&rsquo;ll try to introduce readers who are new to this algorithmic technique of problem solving that can really change the way you think about solving problems. It will give you the ability think problems bottom up rather than more natural and intuitive top down thinking that most of us use. Let me tell you that the bottom up thinking approach won&rsquo;t come readily from just solving one or two problems, you really have to practice lot of problems of this kind to wire it properly to your thinking style.</p>
+<p>I&rsquo;ll try to introduce readers who are new to DP technique of problem solving starting with a very trivial example. DP gives you the ability think problems bottom up rather than more natural and intuitive top down thinking that most of us use. Let me tell you that the bottom up thinking approach won&rsquo;t come readily from just solving one or two problems, you really have to practice lot of problems of this kind to wire it properly to your thinking style and even prior to solving problems using DP, we should know one thing that not all problems exhibit a DP based solution the reasons for which you discover on reading below.</p>
 
 <p>I myself was a bit vague on the principles of dynamic programming but with dedicated readings from the last few months i have been able to make sense of DP and this blog post is a step towards consolidating my understanding.</p>
 

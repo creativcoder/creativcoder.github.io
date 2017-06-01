@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MIT license&lt;br&gt;Powered by [Hugo](//gohugo.io/) with the [Type Theme](//github.com/digitalcraftsman/hugo-type-theme)</copyright>
-    <lastBuildDate>Tue, 15 Sep 2015 21:29:42 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 01 Jun 2017 23:25:02 +0530</lastBuildDate>
     
 	<atom:link href="https://creativcoder.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2017</title>
+      <link>https://creativcoder.github.io/tags/2017/</link>
+      <pubDate>Thu, 01 Jun 2017 23:25:02 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/tags/2017/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Beginner</title>
@@ -27,6 +36,15 @@
       <pubDate>Tue, 15 Sep 2015 21:29:42 +0530</pubDate>
       
       <guid>https://creativcoder.github.io/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Community</title>
+      <link>https://creativcoder.github.io/tags/community/</link>
+      <pubDate>Thu, 01 Jun 2017 23:25:02 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/tags/community/</guid>
       <description></description>
     </item>
     
@@ -85,6 +103,15 @@
     </item>
     
     <item>
+      <title>Meetup</title>
+      <link>https://creativcoder.github.io/tags/meetup/</link>
+      <pubDate>Thu, 01 Jun 2017 23:25:02 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/tags/meetup/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Memory</title>
       <link>https://creativcoder.github.io/tags/memory/</link>
       <pubDate>Mon, 13 Mar 2017 23:25:02 +0530</pubDate>
@@ -132,9 +159,18 @@
     <item>
       <title>Rust</title>
       <link>https://creativcoder.github.io/tags/rust/</link>
-      <pubDate>Mon, 13 Mar 2017 23:25:02 +0530</pubDate>
+      <pubDate>Thu, 01 Jun 2017 23:25:02 +0530</pubDate>
       
       <guid>https://creativcoder.github.io/tags/rust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rustox</title>
+      <link>https://creativcoder.github.io/tags/rustox/</link>
+      <pubDate>Thu, 01 Jun 2017 23:25:02 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/tags/rustox/</guid>
       <description></description>
     </item>
     
