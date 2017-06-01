@@ -5,6 +5,12 @@
     p.meta {
         font-size: 0.7em;
     }
+    p {
+        font-size: 0.8em;
+    }
+    .site-nav {
+        font-size: 0.8em;
+    }
 }
 
 img {
