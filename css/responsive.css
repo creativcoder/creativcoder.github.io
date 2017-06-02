@@ -21,7 +21,7 @@ img {
 
 body {
     font-size: 22px;
-    font-family: 'Chivo', sans-serif;
+    font-family: 'PT Sans', sans-serif;
 }
 
 h1 {
@@ -30,5 +30,5 @@ h1 {
 
 .call-out {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 39px;
+    font-size: 1em;
 }
