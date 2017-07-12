@@ -3,14 +3,19 @@
         font-size: 1.3em;
     }
     p.meta {
-        font-size: 0.7em;
+        font-size: 0.65em;
     }
     p {
         font-size: 0.8em;
     }
     .site-nav {
-        font-size: 0.8em;
+        font-size: 0.75em;
     }
+
+    .call-out {
+        font-size: 0.91em;
+    }
+
 }
 
 img {
@@ -20,15 +25,10 @@ img {
 }
 
 body {
-    font-size: 22px;
-    font-family: 'PT Sans', sans-serif;
+    font-size: 18px;
+    font-family: 'Merriweather', serif;
 }
 
 h1 {
-    font-family: 'Courgette', cursive;
-}
-
-.call-out {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 1em;
+    font-family: 'Lekton', sans-serif;   
 }

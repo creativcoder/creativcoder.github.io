@@ -80,14 +80,14 @@
   </url>
   
   <url>
-    <loc>https://creativcoder.github.io/tags/beginner/</loc>
-    <lastmod>2015-09-15T21:29:42+05:30</lastmod>
+    <loc>https://creativcoder.github.io/categories/beginner/</loc>
+    <lastmod>2017-01-03T18:34:50+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://creativcoder.github.io/categories/beginner/</loc>
-    <lastmod>2017-01-03T18:34:50+05:30</lastmod>
+    <loc>https://creativcoder.github.io/tags/beginner/</loc>
+    <lastmod>2015-09-15T21:29:42+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -122,13 +122,13 @@
   </url>
   
   <url>
-    <loc>https://creativcoder.github.io/tags/functional-programming/</loc>
+    <loc>https://creativcoder.github.io/categories/functional-programming/</loc>
     <lastmod>2016-06-19T22:36:08+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://creativcoder.github.io/categories/functional-programming/</loc>
+    <loc>https://creativcoder.github.io/tags/functional-programming/</loc>
     <lastmod>2016-06-19T22:36:08+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -164,26 +164,26 @@
   </url>
   
   <url>
-    <loc>https://creativcoder.github.io/tags/memory/</loc>
-    <lastmod>2017-03-13T23:25:02+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://creativcoder.github.io/categories/memory/</loc>
     <lastmod>2017-06-01T23:25:02+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://creativcoder.github.io/tags/mozilla/</loc>
-    <lastmod>2017-01-17T01:34:50+05:30</lastmod>
+    <loc>https://creativcoder.github.io/tags/memory/</loc>
+    <lastmod>2017-03-13T23:25:02+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://creativcoder.github.io/categories/mozilla/</loc>
     <lastmod>2016-06-29T23:25:02+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://creativcoder.github.io/tags/mozilla/</loc>
+    <lastmod>2017-01-17T01:34:50+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -206,14 +206,14 @@
   </url>
   
   <url>
-    <loc>https://creativcoder.github.io/tags/profiling/</loc>
-    <lastmod>2017-03-13T23:25:02+05:30</lastmod>
+    <loc>https://creativcoder.github.io/categories/profiling/</loc>
+    <lastmod>2017-06-01T23:25:02+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://creativcoder.github.io/categories/profiling/</loc>
-    <lastmod>2017-06-01T23:25:02+05:30</lastmod>
+    <loc>https://creativcoder.github.io/tags/profiling/</loc>
+    <lastmod>2017-03-13T23:25:02+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -230,13 +230,13 @@
   </url>
   
   <url>
-    <loc>https://creativcoder.github.io/tags/rust/</loc>
+    <loc>https://creativcoder.github.io/categories/rust/</loc>
     <lastmod>2017-06-01T23:25:02+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://creativcoder.github.io/categories/rust/</loc>
+    <loc>https://creativcoder.github.io/tags/rust/</loc>
     <lastmod>2017-06-01T23:25:02+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -278,25 +278,25 @@
   </url>
   
   <url>
-    <loc>https://creativcoder.github.io/tags/valgrind/</loc>
-    <lastmod>2017-03-13T23:25:02+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://creativcoder.github.io/categories/valgrind/</loc>
     <lastmod>2017-06-01T23:25:02+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://creativcoder.github.io/tags/web/</loc>
-    <lastmod>2016-05-20T15:28:15+05:30</lastmod>
+    <loc>https://creativcoder.github.io/tags/valgrind/</loc>
+    <lastmod>2017-03-13T23:25:02+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://creativcoder.github.io/categories/web/</loc>
+    <lastmod>2016-05-20T15:28:15+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://creativcoder.github.io/tags/web/</loc>
     <lastmod>2016-05-20T15:28:15+05:30</lastmod>
     <priority>0</priority>
   </url>
