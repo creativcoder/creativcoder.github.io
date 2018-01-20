@@ -1,4 +1,4 @@
 deploy:
 	hugo
-	cp -r ./public/* ~/Desktop/blog_deploy
+	cp -r ./public/* ../deploy
 	rm public -rf
