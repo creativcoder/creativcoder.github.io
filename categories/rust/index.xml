@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MIT license&lt;br&gt;Powered by [Hugo](//gohugo.io/) with the [Type Theme](//github.com/digitalcraftsman/hugo-type-theme)</copyright>
-    <lastBuildDate>Thu, 01 Jun 2017 23:25:02 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 20 Jan 2018 12:52:02 +0530</lastBuildDate>
     
 	<atom:link href="https://creativcoder.github.io/categories/rust/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Making Rust more awesome in 2018 - My wishlist</title>
+      <link>https://creativcoder.github.io/post/rust-2018/</link>
+      <pubDate>Sat, 20 Jan 2018 12:52:02 +0530</pubDate>
+      
+      <guid>https://creativcoder.github.io/post/rust-2018/</guid>
+      <description>Credits for the animated ferris/header image goes to http://www.rustacean.net/.
+👇 is how i feel using rust in 2018 ! 😂 Cool; So finally got time to write this !
+Rustaceans may already be familiar with Read Rust 2018. Its really awesome to see all blog posts by other people. I&amp;rsquo;m yet to finish reading all of them :P
+Adding to the chain of wishlist and suggestions for Rust&amp;rsquo;s roadmap for 2018, here&amp;rsquo;s my Wishlist:</description>
+    </item>
     
     <item>
       <title>Meet rustox ! Rust community at Bangalore</title>
