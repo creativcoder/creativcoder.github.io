@@ -1,0 +1,107 @@
+---
+title: "Understanding the HTTP Protocol in simple terms part 1"
+date: "2016-02-16"
+path: "/understanding-http-part-1"
+coverImage: ""
+author: "creativcoder"
+---
+
+I have seen many of my peers ask from time to time, what is http, and how it works.
+Also as a web developer understanding HTTP protocol is an essential asset to be able to think in a way, as to how to architecture your web apps, so that it follows the semantics of HTTP.
+
+This post will discuss on the abstraction/medium on which the 'user facing' internet stands on.
+
+A bit of background first!
+
+Just as we humans need a language with a meaningful structure to communicate and exchange ideas effectively among our peers; computers in a similar way need to talk to different computers over a network. And being dumb machines, they need every detail communicated in the message in a precise manner. They need a medium or a language to speak, so that exchange of resources can take place between them. And HTTP is just that language or a protocol in technical parlance, using which computers can talk to other remote computers over a network.
+Technically speaking, HTTP is a request/response based, stateless (will come to this on a follow up post) application layer protocol, implemented on top of a stateful protcol which is TCP/IP usually. TCP/IP is another lower layer of abstraction for communication over the network.
+
+And in a similar way like, our english sentences have a formal structure and semantic; the HTTP protocol also has a formal description of it, usually defined in a spec sheet, called [RFC](https://www.ietf.org/rfc.html)'s (Request for Comments). These are standardized documents, that are accepted globally and maintained by IETF(Internet Engineering Task Force).
+
+The HTTP's [RFC](https://www.rfc-editor.org/rfc/rfc2616.txt) describes in details, every aspect of the request reponse cycle, that can happen over when two machines are communicating over HTTP, how the message will be parsed, what sort of security aspects to employ when sending the message, etc., and these are then implemented by servers and clients ( usually web browsers ), using a programming language based on the infrastructure and needs. The choice of language, is independent, as HTTP specification is language agnostic.
+
+So a server that, is able to speak the http protocol is called an HTTP Server.
+
+Examples of http servers are [nginx](https://www.nginx.com), [apache](http://www.apache.org), etc.
+
+and similarly, a client which is able to speak the http protcol, is called an Http Client.
+
+Examples of http clients are [cURL](https://curl.haxx.se/) (command line http client), python [requests](https://pypi.python.org/pypi/requests) library and ofcourse web browsers.
+
+Now with that explained, we are at the point to see some actual HTTP message.
+
+In HTTP, there are two parts of communication.
+One is the request part, which is sent by http-clients, and the other is the response part, which is sent back by the servers on getting a http request.
+
+Now before we see any actual message, let us understand what a resource means in http.
+Under HTTP, anything that we want to communicate to and fro or query for, with the remote machine is generally termed as a Resource.
+
+So lets see how, how do you say 'hi' in http. (the request part of HTTP Communication)
+
+Before that, lets fire up a socket server in python over TCP, so that we can see what, http request mesage we are receiving from our browser(an http client). We will expand our server further to respond to our browser with a 'hey hi client', when the request is `/hi` in part 2 of this post.
+
+```python
+import socket
+
+host,port = ('',1313)
+
+listener = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+listener.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+listener.bind((host,port))
+listener.listen(1)
+print("Serving on port {}".format(port))
+while True:
+    client_conn,client_addr = listener.accept()
+    request = client_conn.recv(1024)
+    print request 
+```
+
+We won't be diving much into the details of the python sockets connection mechanism, to keep the blog focused only on HTTP. I intend to do another blog post on sockets. To put it in brief, sockets are endpoints of communcation, or channels,(technically its a tuple of (ip_address,port) ) that forms a pathway for messages to be sent accross remote entities.
+
+Save it as server.py, and do `python server.py` to make it, start listening for requests on port 1313.
+
+Now head over to the web browser, and put the url : `localhost:1313/hi`.
+
+Over your terminal window you will see something getting logged to standard output like this.
+
+```
+GET /hi HTTP/1.1
+Host: localhost:1313
+Connection: keep-alive
+Accept: text/html, application/xhtml, application/xml .... (omitted for brevity)
+User-Agent: Mozilla/5.0 (Windows NT 6.3) .... (omitted for brevity)
+Accept-Encoding: gzip, deflate,sdch
+Accept-Language: en-US,en;q=0.8
+Cookie: _ga=GA1.1.52864490.1449694093;__atuvc=27%7C7 ....
+```
+
+An http request starts a series of key value pairs, which in http parlance are known as `header fields`.Basically each key value pair stores a metadata about our request, which is important to let the server know, like information about which http client it will be talking to and what resource is the client asking for and other details. I will touch on a few header fields here.
+
+The first line is of our concern here:
+
+`GET /hi HTTP/1.1`
+
+This says that, it is a `GET` request, and the path to our resource resides at `/hi`, and next is the protcol that the client speaks which is `HTTP/1.1`.
+
+The next line tells about, the `host`, which is `localhost:1313`. It serves as the information to the server, where to send the resposne back to. `localhost` is our domain,`1313`, is our port number on which the server is listening to.
+
+Note: Now web servers by convention, listen on port 80
+
+Now before we talk about the next line, we need to know about the term `stateless`. As HTTP is a stateless protocol, each request and response cycle is not dependent on any previous request reponse. Every response that is made, is ignorant of the state of the server, or any previous request that was sent. I intend to have another blog post on stateless property of HTTP, so for the time being lets, keep it to this definition.
+
+So the `Connection: keep-alive` says, that we want to reuse the same tcp connection we established on the request, for further requests. As HTTP is stateless it closes the connection after every request it makes and so for every subsequent request, HTTP has to re-establish connection to the server.
+If this header field is present, this will try to minimize the the overhead of re-establising the tcp connection on further request. The time for connection keep alive, is usually specified when implementing the server, and also can be configured.
+
+The `User-Agent` header serves as another identity mechanism, to send different, representations of response message to the user. In this example, the user-agent is a Web browser. A mobile device will send a user agent ( for example `Apple-iPhone4C1/902.206` is the user agent for an Apple iPhone4C ); that is different from a web browser becuase its different in terms of form factor, and various features. So accordingly that wil be served differently by the web server.
+
+For further information on other fields, i would reference the sections on the RFC for HTTP1.1, as it is explained better, and it will also help you to get more into reading RFC's directly, and get familiar with their struture and how to make meaning out of them.
+
+[Accept-Encoding](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3)
+
+[Accept-Language](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4)
+
+[Cookie](https://tools.ietf.org/html/rfc6265#section-4.2)
+
+In the next part of this post, we will look over the other side of HTTP, i.e., the Response. We will parse the first line of header field of our request, and will send a response back to the browser.
+
+Thanks. Let me know what you feel of this post.

@@ -49,15 +49,15 @@ const Header = props => {
         <div className={style.inner}>
           <Link to="/">
             <div className={style.logo}>
-              {siteLogo.src ? (
-                <img src={siteLogo.src} alt={siteLogo.alt} />
-              ) : (
-                <>
-                  <span className={style.mark}>></span>
-                  <span className={style.text}>{logoText}</span>
-                  <span className={style.cursor} />
-                </>
-              )}
+                <img className={
+                  (userTheme || defaultTheme) === 'light'
+                    ? 'light-theme'
+                    : 'dark-theme'
+                } src={siteLogo.src} alt={siteLogo.alt} />
+
+                &nbsp;
+                <span className={style.text}>{logoText}</span>
+                <span className={style.cursor} />
             </div>
           </Link>
           <span className={style.right}>

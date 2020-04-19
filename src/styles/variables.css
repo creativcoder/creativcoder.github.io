@@ -1,6 +1,7 @@
 :root {
   /* light theme color */
   --light-background: #fff;
+  --light-background-peach: #f8e4c8;
   --light-background-secondary: #eaeaea;
   --light-color: #222;
   --light-color-secondary: #999;
@@ -16,6 +17,9 @@
   /* variables for js, must be the same as these in @custom-media queries */
   --phoneWidth: (max-width: 684px);
   --tabletWidth: (max-width: 900px);
+
+  --logo-dark: url('static/creativcoder_dark.svg');
+  --logo-light: url('static/creativcoder_light.svg');
 }
 
 @custom-media --phone (width < 684px);

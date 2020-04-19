@@ -1,0 +1,65 @@
+---
+date: "2016-06-19"
+title: "A short intro to type classes in Haskell"
+tags: ["haskell", "functional programming", "type theory", "lambda calculus"]
+coverImage: "https://pbs.twimg.com/media/Cx6pdeFWEAAdop5.png"
+path: "/typeclasses-in-haskell"
+excerpt: "Haskell as a language always fascinates me with its unique typesystem and constructs that offer expressiveness unlike other languages. In this article, I want to share something I learned about type classes in haskell."
+
+---
+
+Haskell as a language always fascinates me with its unique typesystem and constructs that offers expressiveness unlike other languages.
+
+In this article, I want to share something I learned about type classes in Haskell. To do that, we need an example!
+
+Let's create a simple function in haskell that does some arithmetic to understand typeclasses.
+
+So here's our `magical` function:
+
+```haskell
+-- simple_haskell.hs
+magical x y = (x + y) * (x - y)
+```
+
+Let's load this up in `ghci` real quick.
+
+```haskell
+ghci> :l simple_haskell.hs
+```
+
+Let's see the type of function `magical` by running:
+
+```haskell
+:t magical
+```
+We get something like:
+
+```haskell
+Num a => a -> a -> a
+```
+That's a lot of `a`'s and I could hardly figure out what all that meant.
+
+![gif](https://media.giphy.com/media/2wYWi6n5oNdIAH5bLW/giphy.gif)
+
+Y u no simple to read haskell. :|
+
+After endless sessions of skimming the interwebs here and there, I think I have a decent understanding from which to reason further about typeclasses.
+
+So, let's visit our signature again and break it down, shall we!
+
+In the signature above, the  `a -> a -> a` denotes that our function `magical` takes two types `a` (the first two `a`'s) and returns a type `a`.
+
+Take a note that the last one always is the return type. Actually, there is more going on here, which is called currying in functional lingo, but that will be part of another post.
+
+> Side note: Functions in haskell always have an arity of 1, which means they always have one arguement.
+
+It's an unfamiliar syntax to many but not until you learn about lambda calculus or if you have some functional programming background. 
+
+Anyways, what's with the first `Num a`. This is what what we are interested in.
+The `Num` in `Num a`, is a `typeclass` in haskell, and the `a`, is what we call a type variable, (just a placeholder if you will).
+
+Typeclasses in haskell are a construct which encapsulates different functions or behaviors for any type, that falls under that typeclass. They allow you to generalize over a multitude of types confirming to a set of protocol.
+
+As an analogy, the `Num` typeclass in Haskell is a holder of a family of concrete `Num`ish types, which can be `int`, `long`, `float`, `double` etc. Similary `Eq` is another typeclass in haskell used to provide total ordering semantics for two comparable types.
+
+That's all folks. I intend to update this article in future with more details.

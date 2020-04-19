@@ -20,18 +20,28 @@ body {
   font-weight: 600;
   line-height: 1.54;
   background-color: var(--light-background);
+  background-image: url('../../static/light.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
   color: var(--light-color);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   font-feature-settings: "liga", "tnum", "case", "calt", "zero", "ss01", "locl";
   -webkit-overflow-scrolling: touch;
   -webkit-text-size-adjust: 100%;
-
+  
   @media (--phone) {
     font-size: 1rem;
   }
-
+  
   &.dark-theme {
+    background-image: url('../../static/dark.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
     background-color: var(--dark-background);
     color: var(--dark-color);
   }

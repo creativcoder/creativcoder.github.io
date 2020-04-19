@@ -6,6 +6,8 @@ import style from '../styles/icon.module.css'
 const Icon = props => {
   const { d, size = '1em', label, style: styles } = props
 
+  console.log(props);
+
   return (
     <span className={style.root} style={styles} role="figure">
       <svg

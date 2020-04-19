@@ -1,0 +1,138 @@
+---
+date: "2017-01-03"
+title: "Dynamic programming primer"
+tags: ["algorithms", "optimization", "beginner", "dynamic-programming"]
+excerpt: "An intuitive guide on the basics"
+coverImage: "http://i.imgur.com/IaiXuwh.jpg"
+path: "/dynamic-programming-primer"
+author: "creativcoder"
+---
+
+> _"A complex entity is a combinatoric amalgamation of simple loosely coupled pieces"_
+
+![](http://i.imgur.com/IaiXuwh.jpg)
+
+Dynamic programming (DP for brevity) while being widely applicable to a lot of computer science problems is often talked about being complicated to understand and so this post tries to uncover the very basic ideas behind them. This article is aimed for the beginner so experienced readers may not find it useful though I would love suggestions and improvements from experienced people.
+
+I'll try to introduce readers who are new to DP technique of problem solving starting with a very trivial example. DP gives you the ability think problems bottom up rather than more natural and intuitive top down thinking that most of us use. Let me tell you that the bottom up thinking approach won't come readily from just solving one or two problems, you really have to practice a lot of problems of this kind to wire it properly to your thinking and even prior to solving problems using DP we should know one thing that not all problems exhibit a DP based solution the reasons for which you discover you read below.
+
+I myself was a bit vague on the principles of dynamic programming but with dedicated readings from the last few months i have been able to make sense of DP and this blog post is a step towards consolidating my understanding.
+
+So with that intro aside, let's dive in. Let me describe the essense of Dynamic Programming!
+
+Many articles starts explaining dynamic programming by introducing the fibonacci sequence to the readers. We will eventually get there but before that I want to explore a more trivial example to really see the nature of problems that we encounter everyday and how it closely resembles the thinking behind dynamic programming.
+
+Dynamic programming can be seen in integer sequences as well. (From the perspective of an experienced DP guy, this is not a very convincing example as it does not have overlapping subproblems, but I wanted a more trivial example.)
+
+Consider the problme of generating non-negative integer sequences.
+
+Let us ask ourselves how can we form the number 7?
+Although there are more than one possible answer to this. Lets take one solution to it:
+7 = 6 + 1.
+
+So you see 7 can be formed by taking the previous number 6 and adding 1 to it. Similary you can intuit that 6 can be formed by using 5 and adding 1 to it and so on.
+
+In this case, the problem of making the number 7 is split into two subproblems:
+
+* Making 6
+* Adding 1 to it
+
+This brings us to the concept of a subproblem. 
+
+**Subproblem** - A subproblem S(n) is a self contained solution state towards a larger problem. In the above trivial example on integers, the subproblem for getting the number 7 is: (Problem of getting the number 6) + 1. Similarly, Problem of getting the number 6: (Problem of getting number 5) + 1.
+
+To generalize for the above problem, n can be solved by solving (n-1) and adding 1 to it. But in DP, we approach it from the opposite side. To get to the solution 7, we start with a base case solution S(0) =  0 (well zero can be constructed by having only 1 zero), then we construct the next solution to the subproblem S(1) = S[0] + 1. Then S(2) = S[1] + 1, then S(3) = S[2] + 1 until we reach S(7) = S[6] + 1. Notice the square brackets when we are building the next solution. It means that we are using the previous solution which was already calculated before.
+
+Having made the concept of a subproblem clear, let's get to our fibonacci example which most of you should be familiar with. Here's a formal definition:
+
+```
+f(n) = f(n-1) + f(n-2)        where n[0] = 0 and n[1] = 1
+```
+
+Lets map the concepts we learned from our previous example.
+
+Here `n[0]` and `n[1]` are base cases. `f(n)` is the instance of the problem we are trying to solve and by its definition `f(n-1)` and `f(n-2)` are the subproblems which when added gives the solution to f(n).
+
+There is a straight forward recursive approach, to solve fibonacci sequences.
+
+A python example:
+
+```
+def fib(n):
+  if n == 0 or n == 1:
+    return n
+  return fib(n-1)+fib(n-2)
+```
+
+If we explicitely list out the solution to f(7):
+```
+f(7) = f(6) + f(5)
+  (A)    (B)
+```
+Lets also expand A and B
+```
+A: f(6) = f(5) + f(4)
+B: f(5) = f(4) + f(3)
+```
+Now there's an interesting observation branching of the problem into two subproblems. We are recalcuting at least one thing in the next subproblem that we already calculated in previous levels. An example of this would be : `f(5)` is calculated in `f(7)` branching, but it's also calculated in `f(6)` branching. This redundant recalculation continues at all levels of branches, resulting in a worst case complexity of `2^n`. As a result, this solution takes a lot of time to run for queries such as `f(40)` or `f(100)`.
+
+This fibonacci problem shows us two attributes which are characteristics for knowing if a DP solution can be applied to a problem:
+
+1) **Overlapping subproblems** - As explained above on the branching of function calls, we are re-calculating many things that have been calculated before. The fibonacci example shows that there are same subproblems that are overlapping or recalculated at many levels.
+
+2) **Optimal substructure** - This simply means that, optimal solutions to smaller sub problems gives the solution to the larger problem. The fibonacci example does help in depicting this, but this can be seen in algorithms such as the Shortest Path Problem, where we must need a shortest path for the subproblems to get the overall shortest path.
+
+So the problem of finding Fibonacci numbers can indeed be solved using DP.
+
+But it can be done in two ways:
+* Top down
+* Bottom up
+
+Let's take a look at the top down approach, also know as memoization.
+
+> The term "memoization" was introduced by Donald Michie in the year 1968. It's based on the Latin word memorandum which means "to be remembered".
+
+```python
+cache = {}
+def fibonacci_memo(n):
+    if n < 2:
+        cache[n] = n
+        return n
+    elif n not in cache:
+        cache[n] = fibonacci_memo(n-1) + fibonacci_memo(n-2)
+    return cache[n]
+```
+
+So what did we just do? We just added a `cache` dictionary to store the computed values. Then for the given query `n`, our cache method will return results from our cache rather than re-computing it, If it does not exist
+
+And here's our bottom up approach:
+
+```python
+cache = {}
+def fibonacci_dp(n):
+  if n < 2:
+    cache[n] = n
+    return n
+  else:
+    for i in range(2, n):
+      cache[i] = cache[i-1] +c ache[i-2]
+  return cache[n]
+```
+
+In the bottom up approach, we construct our solution optimally from the base cases and work our way up until we reach to the given `n`. This approach cuts down our overhead of making function calls and creating new stack frames.
+
+So to summerize our understanding, Dynamic programming is:
+
+1) Splitting our problem into subproblem and identifying if the subproblems are overlapping.
+
+2) Solving the sub problems optimally and saving it and try it on a larger problem to see if we are getting the desired solution to the larger problem.
+
+DP is not some definite algorithm, but consider it as a meta algorithm that allows you to minimize the runtime complexity of your existing algorithm that you have thought of by identifying and eliminating redundant parts of it.
+
+_Richard Bellman_ who theorized DP in his paper describes it as a decision guiding principle in a problem where we have several states of a problem and we wish to maximize the outcome of the problem. It is an algorithm optimization technique.
+
+If you want to dive deeper into the roots of it, consider reading this paper **http://smo.sogang.ac.kr/doc/bellman.pdf** by Richard.
+
+So that was basically it about dynamic programming. In the next post on this topic, we will see another DP problem by introducing the coin change problem.
+
+Cheers :)

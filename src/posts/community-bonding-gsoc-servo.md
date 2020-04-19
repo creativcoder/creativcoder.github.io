@@ -1,0 +1,56 @@
+---
+date: "2016-06-09"
+title: "Post community bonding period with Servo- GSoC'16"
+coverImage: "https://hackernoon.com/hn-images/0*GXeaiRPePMjHuuHZ"
+tags: ["servo", "rust", "open-source", "gsoc"]
+excerpt: "An awesome experience"
+path: "/community-bonding-gsoc-servo"
+author: "creativcoder"
+---
+
+![alt init_phase](https://hackernoon.com/hn-images/0*GXeaiRPePMjHuuHZ)
+
+My [previous post](service-workers-web/) gave a brief introduction about service workers. This post will be a brief intro to Servo's architectural design in order to provide a context for my next post that discusses about the initial support for Service Workers that needs to be implemented.
+
+The Servo browser engine, a project driven by the need for exploiting parellelism at every level of rendering and layout and to leverage the growing number of CPU cores we have available today. Existing browsers in the market today are not easily able to exploit the multi-core CPUs because it would require a re-thought on their large legacy codebase. The architectural design of majority of browsers we have today were envisioned long back ago when there weren't many CPU cores available to us. But things have changed today and that the CPU clocks already have reached its max clock numbers. So there is a natural progression towards multi-core CPUs even running in mobile devices. Now Servo is at this growth phase where it is feasible to experiment with modern tools and techniques in order to analyse what works best and what not and to leverage the parallelism of multi-core CPUs. The aim is to build an embeddable browser engine, that runs efficiently and fast with lesser bugs.
+
+The engine is being developed in a type safe GC-less language named `Rust` a project started by [Graydon Hoare](https://github.com/graydon) and now is sponsored by Mozilla. Rust is a low-level system's programming language with a highly expressive type system yet affords zero cost abstractions with compile time type safety checks without relying on Garbage collection. You produce well defined programs, when you write Rust code. The language has this concept of ownership rules describing that there can only be a single owner of a resource in its surrounding scope, and that borrowing it would freeze any modifications by the borrower as well as by the owner. The choice of choosing a completely different language other than C++ (which most browser engines are developed in) comes as another reason for mitigating various [bugs](https://bugs.launchpad.net/bugs/bugtrackers/auto-bugs.webkit.org) of arbitrary code access or memory segfaults that exists in most browsers today.
+
+So, how does a browser engine works? Well, a justified answer to that would be in several pages.😄 A lot goes on in a browser engine's lifecycle. To make it brief, A web browser as seen from an outer level, consists of two parts: the outer `chrome shell`, which is the windowing system users use to interact with the page and the inner rendering engine, which does all the heavy lifting of rendering those complex web pages. That's the general bird's eye. If you want to dig into details, I would reference this [article](http://www.html5rocks.com/en/tutorials/internals/howbrowserswork/).
+
+Having made ourselves familiar with browser engines, let's look at what are the main components of Servo. Servo's codebase is organized as follows:
+
+#### [Compositor](https://github.com/servo/servo/blob/master/components/compositing/compositor.rs): 
+
+Manages Window events back and forth from Constellation.
+
+#### [Constellation](https://github.com/servo/servo/blob/master/components/constellation/constellation.rs):
+
+Central co-ordinator of events from Compositor and the different Pipelines.
+
+#### [Pipeline](https://github.com/servo/servo/blob/master/components/constellation/pipeline.rs):
+A pipeline is a seperate process and the constellation keeps track of all the pipelines created. It comprises of the script thread, the layout thread, paint thread.
+
+#### [Resource](https://github.com/servo/servo/blob/master/components/net/resource_thread.rs):
+Manages all of file I/O or network I/O events, when requested by the DOM. It also performs caching of resources.
+
+#### [Script](https://github.com/servo/servo/tree/master/components/script):
+This comprises of the in-memory representation of the DOM (Document Object Model) that represents a web page along with its script thread which manages parsing of the document and running any javascript in the page. Servo does not have its own javascript engine in Rust yet, and instead relies on the [Spidermonkey Engine](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey) for which [bindings](https://github.com/servo/rust-mozjs) are generated to be used by the DOM code. The DOM objects are managed solely by the Spidermonkey's Garbage collector and Servo does not involve itself with any reference counting of Rust side of DOM objects, as compared to Gecko which uses a cycles collector in c++ code. Every DOM code on Rust side keeps a reflector (a pointer) to the Spidermonkey's DOM object.
+
+The above components are isolated tasks that communicate with each other via message passing i.e., using [channels](https://github.com/servo/ipc-channel).
+
+* The lifecycle of Servo, starts with [main.rs](https://github.com/servo/servo/blob/ce88b8ed30feff9c7d3f067041fe5d781e012351/components/servo/main.rs#L51) doing an initial command line parsing to get the URI of the requested resources. It then creates a Window Compositor followed by the Constellation, which is then able to handle user events and inputs, which can then be forwarded to the constellation for processing.
+
+* The [Constellation](https://github.com/servo/servo/blob/ce88b8ed30feff9c7d3f067041fe5d781e012351/components/constellation/constellation.rs#L84) acts a mediator between the Window Compositor and the Pipeline. It also handles the navigation events made from within, the Script thread (of any page) or from the Compositor. The constellation also initiates other threads such as the Resource thread, and the Image Cache thread.
+
+* A Pipeline in Servo is an an abstraction of a unit of "web content". These are tracked by the constellation thread.
+
+A [Pipeline](https://github.com/servo/servo/blob/ce88b8ed30feff9c7d3f067041fe5d781e012351/components/constellation/pipeline.rs#L49) process consists of a Layout Thread, Render Thread, and the Script Thread.
+
+When a new pipeline is created spawning different threads, it hands over the task to the script thread to load the url, which was passed as arguments. The script thread sends the load message to the Resource Thread, which dispatches the task to the appropriate loader, depending on the scheme of the URI requested. The content received from the resource thread is consumed in chunks and is forwarded then to the HTML parser in the script thread. The parser then creates the DOM, and this parsed DOM along with its stylesheets is then issued with a [reflow](https://github.com/servo/servo/blob/ce88b8ed30feff9c7d3f067041fe5d781e012351/components/layout/layout_thread.rs#L998) event to the Layout thread. The Layout thread calculates positioning and bounds of all DOM nodes in the parsed document. It then constructs a Render Tree with all the information necessary to paint the document using the graphics API. The render tree is then, handed over to the paint thread, which starts rendering the document in the viewport/window.
+
+The above explanation is a very simplified overview of what goes into rendering a document in Servo. There's a lot to discover and I will hopefully update this post with articulate sections in future as I gain more insight.
+
+The next post will discuss on some of the prelimnary aspects of Service Workers integration in Servo that needed to be integrated in the network code, in order to enable service workers to respond to the client requesting some resource from the network with some custom response if there is any response for a request that's cached in.
+
+Thanks for all the help from Servo team in helping me understand the topics.

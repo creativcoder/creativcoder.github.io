@@ -55,9 +55,8 @@ exports.createPages = ({ actions, graphql, getNodes }) => {
     })
 
     const posts = allNodes.filter(
-      ({ internal, fileAbsolutePath }) =>
-        internal.type === 'MarkdownRemark' &&
-        fileAbsolutePath.indexOf('/posts/') !== -1,
+      ({ internal, fileAbsolutePath }) => internal.type === 'MarkdownRemark'
+       && fileAbsolutePath.indexOf('/posts/') !== -1,
     )
 
     // Create posts index with pagination
@@ -134,6 +133,7 @@ exports.sourceNodes = ({ actions }) => {
       path: String!
       tags: [String!]
       excerpt: String
+      draft: Boolean
       coverImage: File @fileByRelativePath
     }
   `

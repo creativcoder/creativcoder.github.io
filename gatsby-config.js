@@ -7,31 +7,39 @@ const postCSSMixins = require('postcss-mixins')
 
 module.exports = {
   siteMetadata: {
-    title: `Hello Friend`,
-    description: `A simple starter for Gatsby. That's it.`,
+    title: `/creativcoder`,
+    description: `Hi welcome to my blog.`,
     copyrights: '',
     author: `@panr`,
     logo: {
-      src: '',
-      alt: '',
+      src: 'creativcoder_dark.svg',
+      alt: 'logo',
     },
-    logoText: 'hello friend',
+    logoText: 'creativcoder.dev',
     defaultTheme: 'dark',
-    postsPerPage: 5,
-    showMenuItems: 2,
-    menuMoreText: 'Show more',
+    postsPerPage: 10,
+    showMenuItems: 4,
+    menuMoreText: '⤵️',
     mainMenu: [
       {
-        title: 'About',
-        path: '/about',
+        title: '/whoami',
+        path: '/whoami',
       },
       {
-        title: 'Showcase',
-        path: '/showcase',
+        title: '/open-source',
+        path: '/open-source',
       },
       {
-        title: 'Example',
-        path: '/example',
+        title: '/projects',
+        path: '/projects',
+      },
+      {
+        title: '/talks',
+        path: '/talks',
+      },
+      {
+        title: '/publications',
+        path: '/publications',
       },
     ],
   },
@@ -114,7 +122,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-hello-friend`,
+        name: `creativcoder.dev`,
         short_name: `hello-friend`,
         start_url: `/`,
         background_color: `#292a2d`,
@@ -123,5 +131,14 @@ module.exports = {
         icon: `src/images/hello-icon.png`,
       },
     },
-  ],
+
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /assets/
+        }
+      }
+    }
+  ]
 }
