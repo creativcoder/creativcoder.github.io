@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import { Helmet } from 'react-helmet'
-
 import Menu from './menu'
 
 import style from '../styles/header.module.css'
@@ -24,40 +23,29 @@ const Header = props => {
   const [isSubMenuVisible, toggleSubMenu] = useState(false)
   const onChangeTheme = () => {
     const opositeTheme =
-      (userTheme || defaultTheme) === 'light' ? 'dark' : 'light'
-
+    (userTheme || defaultTheme) === 'light' ? 'dark' : 'light'
     changeTheme(opositeTheme)
-
-    typeof window !== 'undefined' &&
-      window.localStorage.setItem('theme', opositeTheme)
+    typeof window !== 'undefined' && window.localStorage.setItem('theme', opositeTheme)
   }
   const onToggleMobileMenu = () => toggleMobileMenu(!isMobileMenuVisible)
   const onToggleSubMenu = () => toggleSubMenu(!isSubMenuVisible)
+  const theme = (userTheme || defaultTheme) === 'light' ? 'light-theme' : 'dark-theme'
+  const logoImg = theme === 'light-theme'? 'creativcoder_dark.svg':'creativcoder_light.svg'
 
   return (
     <>
       <Helmet>
-        <body
-          className={
-            (userTheme || defaultTheme) === 'light'
-              ? 'light-theme'
-              : 'dark-theme'
-          }
-        />
+        <body className={theme} />
       </Helmet>
+
       <header className={style.header}>
         <div className={style.inner}>
           <Link to="/">
             <div className={style.logo}>
-                <img className={
-                  (userTheme || defaultTheme) === 'light'
-                    ? 'light-theme'
-                    : 'dark-theme'
-                } src={siteLogo.src} alt={siteLogo.alt} />
-
-                &nbsp;
-                <span className={style.text}>{logoText}</span>
-                <span className={style.cursor} />
+              <img className={theme} src={logoImg} alt={siteLogo.alt} />
+              &nbsp;
+              <span className={style.text}>{logoText}</span>
+              <span className={style.cursor} />
             </div>
           </Link>
           <span className={style.right}>

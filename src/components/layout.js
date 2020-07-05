@@ -38,7 +38,6 @@ const Layout = ({ children }) => {
     mainMenu,
     showMenuItems,
     menuMoreText,
-    copyrights,
   } = data.site.siteMetadata
 
   return (
@@ -52,8 +51,9 @@ const Layout = ({ children }) => {
         mainMenuItems={showMenuItems}
         menuMoreText={menuMoreText}
       />
+
       <div className="content">{children}</div>
-      <Footer copyrights={copyrights} />
+      <Footer />
     </div>
   )
 }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import SEO from '../components/seo'
 import Layout from '../components/layout'
-import Post from '../components/post'
+import Posts from '../components/posts'
 import Navigation from '../components/navigation'
 
 import '../styles/layout.css'
@@ -40,7 +40,7 @@ const Tags = ({
           } = node
 
           return (
-            <Post
+            <Posts
               key={id}
               title={title}
               date={date}

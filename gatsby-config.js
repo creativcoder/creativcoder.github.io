@@ -8,6 +8,7 @@ const postCSSMixins = require('postcss-mixins')
 module.exports = {
   siteMetadata: {
     title: `/creativcoder`,
+    siteUrl: 'https://creativcoder.dev',
     description: `Hi welcome to my blog.`,
     copyrights: '',
     author: `@panr`,
@@ -15,30 +16,26 @@ module.exports = {
       src: 'creativcoder_dark.svg',
       alt: 'logo',
     },
-    logoText: 'creativcoder.dev',
-    defaultTheme: 'dark',
+    logoText: '> creativcoder.dev',
+    defaultTheme: 'light',
     postsPerPage: 10,
     showMenuItems: 4,
     menuMoreText: '⤵️',
     mainMenu: [
       {
-        title: '/whoami',
+        title: 'whoami',
         path: '/whoami',
       },
       {
-        title: '/open-source',
+        title: 'open-source',
         path: '/open-source',
       },
       {
-        title: '/projects',
-        path: '/projects',
-      },
-      {
-        title: '/talks',
+        title: 'talks',
         path: '/talks',
       },
       {
-        title: '/publications',
+        title: 'publications',
         path: '/publications',
       },
     ],
@@ -93,6 +90,23 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: `gatsby-plugin-manifest`,
+            options: {
+              name: `GatsbyJS`,
+              short_name: `GatsbyJS`,
+              start_url: `/`,
+              background_color: `#f7f0eb`,
+              theme_color: `#a2466c`,
+              display: `standalone`,
+            },
+          },
+          {
+            resolve: 'gatsby-remark-mermaid',
+            options: {
+              theme: 'default',
+            },
+          },
+          {
             resolve: 'gatsby-remark-embed-video',
             options: {
               related: false,
@@ -120,25 +134,24 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /assets/,
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `creativcoder.dev`,
-        short_name: `hello-friend`,
+        short_name: `creativcoder.dev`,
         start_url: `/`,
         background_color: `#292a2d`,
         theme_color: `#292a2d`,
         display: `minimal-ui`,
-        icon: `src/images/hello-icon.png`,
+        icon: `static/creativcoder_dark.svg`,
       },
     },
-
-    {
-      resolve: "gatsby-plugin-react-svg",
-      options: {
-        rule: {
-          include: /assets/
-        }
-      }
-    }
-  ]
+  ],
 }

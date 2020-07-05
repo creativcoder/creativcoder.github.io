@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 
 import SEO from '../components/seo'
 import Layout from '../components/layout'
-import Post from '../components/post'
+import Posts from '../components/posts'
 
 const BlogPostTemplate = ({ data, pageContext }) => {
   const {
@@ -18,7 +18,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
   return (
     <Layout>
       <SEO title={title} description={excerpt || autoExcerpt} />
-      <Post
+      <Posts
         key={id}
         title={title}
         date={date}

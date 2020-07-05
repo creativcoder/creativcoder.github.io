@@ -5,7 +5,7 @@ author: "creativcoder"
 path: "/open-source"
 ---
 
-This page lists all of my open source contributions:
+## Open source contributions:
 
 Rustc compiler:
 
@@ -26,25 +26,28 @@ https://github.com/llogiq/mutagen/pull/27
 Rust-rosetta: Rosetta code problems in Rust
 https://github.com/rust-rosetta/rust-rosetta/pulls?q=is%3Apr+author%3Acreativcoder+is%3Aclosed
 
+## Projects:
 
-### Compilers and interpreters
+The page is categorized as per domain:
+
+#### Compilers and interpreters
 
 • Templar: Simple template engine in Python: https://github.com/creativcoder/templar
 
 • Brainfcuk – An optimizing brainfuck interpreter written in Rust using a custom intermediate representation. https://github.com/creativcoder/brainfcuk
 
-### Algorithms
+#### Algorithms
 
 [TODO fill details]
 
-### GUIs
+#### GUIs/Desktop
 
 [TODO fill details]
 
-### Systems programming
+#### Systems programming
 
 [TODO fill details]
 
-### WebDev
+#### Web
 
 [TODO fill details]

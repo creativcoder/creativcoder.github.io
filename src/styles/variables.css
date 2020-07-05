@@ -18,8 +18,8 @@
   --phoneWidth: (max-width: 684px);
   --tabletWidth: (max-width: 900px);
 
-  --logo-dark: url('static/creativcoder_dark.svg');
-  --logo-light: url('static/creativcoder_light.svg');
+  --logo-dark: url('../../static/creativcoder_dark.svg');
+  --logo-light: url('../../static/creativcoder_light.svg');
 }
 
 @custom-media --phone (width < 684px);

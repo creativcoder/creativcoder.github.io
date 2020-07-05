@@ -1,13 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { useEffect } from 'react'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import Navigation from './navigation'
 import { toKebabCase } from '../helpers'
 
+import Comment from './comment'
+
 import style from '../styles/post.module.css'
 
-const Post = ({
+const Posts = ({
   title,
   date,
   path,
@@ -23,6 +24,23 @@ const Post = ({
   const previousLabel = previousPost && previousPost.frontmatter.title
   const nextPath = nextPost && nextPost.frontmatter.path
   const nextLabel = nextPost && nextPost.frontmatter.title
+  const commentBox = React.createRef()
+
+  useEffect(() => {
+    const scriptEl = document.createElement('script')
+    scriptEl.async = true
+    scriptEl.src = 'https://utteranc.es/client.js'
+    scriptEl.setAttribute('repo', 'creativcoder/creativcoder.dev-comments')
+    scriptEl.setAttribute('issue-term', 'title')
+    scriptEl.setAttribute('id', 'utterances')
+    scriptEl.setAttribute('theme', 'github-light')
+    scriptEl.setAttribute('crossorigin', 'anonymous')
+    if (commentBox && commentBox.current) {
+      commentBox.current.appendChild(scriptEl)
+    } else {
+      console.log(`Error adding utterances comments on: ${commentBox}`)
+    }
+  }, [])
 
   return (
     <div className={style.post}>
@@ -31,7 +49,13 @@ const Post = ({
           {excerpt ? <Link to={path}>{title}</Link> : title}
         </h1>
         <div className={style.meta}>
-          🕑 {date} {author && <> 📝 <a href='/whoami'>{author}</a></>}
+          🕑 {date}{' '}
+          {author && (
+            <>
+              {' '}
+              📝 <a href="/whoami">{author}</a>
+            </>
+          )}
           {tags ? (
             <div className={style.tags}>
               {tags.map(tag => (
@@ -60,6 +84,7 @@ const Post = ({
         ) : (
           <>
             <div dangerouslySetInnerHTML={{ __html: html }} />
+          
             <Navigation
               previousPath={previousPath}
               previousLabel={previousLabel}
@@ -68,22 +93,11 @@ const Post = ({
             />
           </>
         )}
+
+        {excerpt? <></>: <Comment commentBox={commentBox} />}
       </div>
     </div>
   )
 }
 
-Post.propTypes = {
-  title: PropTypes.string,
-  date: PropTypes.string,
-  path: PropTypes.string,
-  coverImage: PropTypes.object,
-  author: PropTypes.string,
-  excerpt: PropTypes.string,
-  html: PropTypes.string,
-  tags: PropTypes.arrayOf(PropTypes.string),
-  previousPost: PropTypes.object,
-  nextPost: PropTypes.object,
-}
-
-export default Post
+export default Posts
