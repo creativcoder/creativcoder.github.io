@@ -49,7 +49,7 @@ const Posts = ({
           {excerpt ? <Link to={path}>{title}</Link> : title}
         </h1>
         <div className={style.meta}>
-          🕑 {date}{' '}
+          {date}
           {author && (
             <>
               {' '}
@@ -94,7 +94,7 @@ const Posts = ({
           </>
         )}
 
-        {excerpt? <></>: <Comment commentBox={commentBox} />}
+        { excerpt? <></>: <Comment commentBox={commentBox} />}
       </div>
     </div>
   )
