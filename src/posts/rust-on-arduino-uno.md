@@ -22,7 +22,7 @@ We'll take a whirlwind tour on how to run Rust on the Arduino Uno, which is prob
 
 With that brief history aside, let's get into it!
 
-We'll do the hello world of arduino which is blinking an LED. It's a very simple exercise, but there's a lot to learn as a beginner.
+We'll do the hello world of arduino which is blinking its built-in LED. It's a very simple exercise, but there's a lot to learn as a beginner.
 
 ## [Setting up our project](#setting-up-our-project)
 
@@ -68,7 +68,7 @@ git = "https://github.com/Rahix/avr-hal"
 `avr-hal` is a cargo workspace that contains a bunch of crates segregated by boards where the `arduino-uno` crate is one
 of them. Thanks to [Rahix](https://github.com/Rahix/avr-hal) for putting this together.
 
-We'll also need to add build metadata for cargo for the avr target. We'll create a file `avr-atmega328p` at our project root with the following contents:
+We'll also need to add build metadata for cargo for the avr target. We'll create a file `avr-atmega328p.json` in our project root with the following contents:
 
 ```json
 {
@@ -200,7 +200,7 @@ fn main() -> ! {
 
 There's a lot going on in the code above!
 
-First, we create an instance of `Peripheral` which is a list of all peripherals in Uno.
+First, we create an instance of `Peripherals` which is a list of all peripherals in Uno.
 Peripherals are devices that bridge the communication with your chip/cpu with external devices, sensors etc.
 Examples of peripherals would be your timers, counters, serial port etc.
 An embedded processor interacts with a peripheral device through a set of control and status registers.
@@ -211,13 +211,13 @@ We then define a variable `led` that will hold the pin number that the LED is co
 DDR register determines if pins on a specific port are inputs or outputs. The DDR register is 8 bits long and each bit corresponds to a pin on that I/O port. For example, the first bit (bit 0) of DDRB will determine if PB0 is an input or output, while the last bit (bit 7) will determine if PB7 is an input or output. I still need to do a bit more reading to fully understand DDR registers.
 
 Next, we go into a `loop {}` and call `stutter_blink` function providing a mutable reference to our `led` instance
-and numbe of times (`25`) that we want to blink.
+and number of times (`25`) that we want to blink.
 
 Here's our `stutter_blink` function definition:
 
 ```rust
 fn stutter_blink(led: &mut PB5<Output>, times: usize) {
-    (0..times).take(times).map(|i| i * 10).for_each(|i| {
+    (0..times).map(|i| i * 10).for_each(|i| {
         led.toggle().void_unwrap();
         arduino_uno::delay_ms(i as u16);
     });
@@ -225,7 +225,7 @@ fn stutter_blink(led: &mut PB5<Output>, times: usize) {
 ```
 
 All we do in `stutter_blink` is call toggle on `led` followed by a `delay_ms` call from the `arduino_uno` module.
-This is all done in an iterator. We create an infinite range `(0..times)` followed by calling `take` to limit the number of `times` the iterator runs and then `map` it so that we can progressively delay the LED toggle by a noticeable amount. We could have definitely done this using a for loop and that would be more readable, but I wanted to demonstrate that we can use all the high level APIs and abstractions from Rust. 
+This is all done in an iterator. We create a range `(0..times)` followed by calling `map` so that we can progressively delay the LED toggle by a noticeable amount. We could have definitely done this using a for loop and that would be more readable, but I wanted to demonstrate that we can use all the high level APIs and abstractions from Rust. 
 We are writing functional code for an embedded systems where the abstractions are zero cost.
 That's a thing possible only in Rust as far as I know!
 
@@ -243,7 +243,7 @@ use arduino_uno::hal::port::portb::PB5;
 use arduino_uno::hal::port::mode::Output;
 
 fn stutter_blink(led: &mut PB5<Output>, times: usize) {
-    (0..times).take(times).map(|i| i * 10).for_each(|i| {
+    (0..times).map(|i| i * 10).for_each(|i| {
         led.toggle().void_unwrap();
         arduino_uno::delay_ms(i as u16);
     });
@@ -272,7 +272,7 @@ Let's try to build this crate:
 ```bash
 cargo build
 ```
-If all went fine, you should see an elf file  `rust-arduino-blink.elf` generated under  `target/avr-atmega328p/debug/` directory. That's the binary we need to flash to our Uno. To flash the elf file, we'll use the `avrdude` utility. Let's create a script at the root directory named `flash.sh` that does `cargo build` followed by flashing it our uno:
+If all went fine, you should see an elf file  `rust-arduino-blink.elf` generated under `target/avr-atmega328p/debug/` directory. That's the binary we need to flash to our Uno. To flash the elf file, we'll use the `avrdude` utility. Let's create a script at the root directory named `flash.sh` that does `cargo build` followed by flashing it our uno:
 
 ```bash
 #! /usr/bin/zsh
@@ -294,9 +294,11 @@ avrdude -q -C/etc/avrdude.conf -patmega328p -carduino -P/dev/ttyACM0 -D "-Uflash
 
 ```
 
-With that, we can run now run (make sure your Uno is connected via the USB cable):
+With that, we can now run (make sure your Uno is connected via the USB cable):
 
-`./flash.sh target/avr-atmega328p/debug/rust-arduino-blink.elf`
+```bash
+./flash.sh target/avr-atmega328p/debug/rust-arduino-blink.elf
+```
 
 and there you go:
 
@@ -307,16 +309,21 @@ Our first blinking program on Arduino running Rust!
 If you get a permission denied error when accessing `/dev/ttyACM0`. You may need to add your user
 to a linux user group that has access to the serial interface.
 First, we find the group using:
-
-`ls -l /dev/ttyACM0`
+```bash
+ls -l /dev/ttyACM0
+```
 
 I get the following output on my machine:
 
-`crw-rw---- 1 root uucp 166, 0 Aug 19 03:29 /dev/ttyACM0`
+```bash
+crw-rw---- 1 root uucp 166, 0 Aug 19 03:29 /dev/ttyACM0
+```
 
 To add your username to `uucp` group, we run:
- 
-`sudo usermod -a -G uucp creativcoder`
+
+```bash
+sudo usermod -a -G uucp creativcoder
+```
 
 Suggestions/comments/corrections most welcome.
 
