@@ -8,7 +8,7 @@
 <hr>
 <p>We'll take a whirlwind tour on how to run Rust on the Arduino Uno, which is probably the most widely known and used development board in the hobbyist embedded domain. The <a href="https://store.arduino.cc/usa/arduino-uno-rev3">Arduino Uno</a> is based on the ATmega328P, which is an 8 bit microcontroller falling under the family AVR. AVR is a family of micro-controllers developed since 1996 by Atmel, which was later acquired by Microchip technology. If you wanna read more about that, head over here: <a href="https://book.avr-rust.com/001-introduction.html">AVR-Rust book</a></p>
 <p>With that brief history aside, let's get into it!</p>
-<p>We'll do the hello world of arduino which is blinking an LED. It's a very simple exercise, but there's a lot to learn as a beginner.</p>
+<p>We'll do the hello world of arduino which is blinking its built-in LED. It's a very simple exercise, but there's a lot to learn as a beginner.</p>
 <h2><a href="#setting-up-our-project">Setting up our project</a></h2>
 <p>First, we'll create a new cargo project by running:</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">cargo new rust-arduino-blink</code></pre></div>
@@ -31,7 +31,7 @@ For this we'll need to switch to the nightly toolchain as some of the dependent 
 <span class="token key property">git</span> <span class="token punctuation">=</span> <span class="token string">"https://github.com/Rahix/avr-hal"</span></code></pre></div>
 <p><code class="language-text">avr-hal</code> is a cargo workspace that contains a bunch of crates segregated by boards where the <code class="language-text">arduino-uno</code> crate is one
 of them. Thanks to <a href="https://github.com/Rahix/avr-hal">Rahix</a> for putting this together.</p>
-<p>We'll also need to add build metadata for cargo for the avr target. We'll create a file <code class="language-text">avr-atmega328p</code> at our project root with the following contents:</p>
+<p>We'll also need to add build metadata for cargo for the avr target. We'll create a file <code class="language-text">avr-atmega328p.json</code> in our project root with the following contents:</p>
 <div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
     <span class="token property">"llvm-target"</span><span class="token operator">:</span> <span class="token string">"avr-unknown-unknown"</span><span class="token punctuation">,</span>
     <span class="token property">"cpu"</span><span class="token operator">:</span> <span class="token string">"atmega328p"</span><span class="token punctuation">,</span>
@@ -125,7 +125,7 @@ We need access to the pin in our code in order to manipulate the LED, i.e., set 
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>There's a lot going on in the code above!</p>
-<p>First, we create an instance of <code class="language-text">Peripheral</code> which is a list of all peripherals in Uno.
+<p>First, we create an instance of <code class="language-text">Peripherals</code> which is a list of all peripherals in Uno.
 Peripherals are devices that bridge the communication with your chip/cpu with external devices, sensors etc.
 Examples of peripherals would be your timers, counters, serial port etc.
 An embedded processor interacts with a peripheral device through a set of control and status registers.</p>
@@ -133,16 +133,16 @@ An embedded processor interacts with a peripheral device through a set of contro
 We then define a variable <code class="language-text">led</code> that will hold the pin number that the LED is connected to. This is created by configuring pin 13 as output pin using the <code class="language-text">into_output</code> method of the <code class="language-text">d13</code> pin and passing in a mutable reference to our <code class="language-text">ddr</code> register.</p>
 <p>DDR register determines if pins on a specific port are inputs or outputs. The DDR register is 8 bits long and each bit corresponds to a pin on that I/O port. For example, the first bit (bit 0) of DDRB will determine if PB0 is an input or output, while the last bit (bit 7) will determine if PB7 is an input or output. I still need to do a bit more reading to fully understand DDR registers.</p>
 <p>Next, we go into a <code class="language-text">loop {}</code> and call <code class="language-text">stutter_blink</code> function providing a mutable reference to our <code class="language-text">led</code> instance
-and numbe of times (<code class="language-text">25</code>) that we want to blink.</p>
+and number of times (<code class="language-text">25</code>) that we want to blink.</p>
 <p>Here's our <code class="language-text">stutter_blink</code> function definition:</p>
 <div class="gatsby-highlight" data-language="rust"><pre class="language-rust"><code class="language-rust"><span class="token keyword">fn</span> <span class="token function">stutter_blink</span><span class="token punctuation">(</span>led<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">mut</span> PB5<span class="token operator">&lt;</span>Output<span class="token operator">></span><span class="token punctuation">,</span> times<span class="token punctuation">:</span> usize<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">..</span>times<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">take</span><span class="token punctuation">(</span>times<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token operator">|</span>i<span class="token operator">|</span> i <span class="token operator">*</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">for_each</span><span class="token punctuation">(</span><span class="token closure-params"><span class="token punctuation">|</span>i<span class="token punctuation">|</span></span> <span class="token punctuation">{</span>
+    <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">..</span>times<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token operator">|</span>i<span class="token operator">|</span> i <span class="token operator">*</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">for_each</span><span class="token punctuation">(</span><span class="token closure-params"><span class="token punctuation">|</span>i<span class="token punctuation">|</span></span> <span class="token punctuation">{</span>
         led<span class="token punctuation">.</span><span class="token function">toggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">void_unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         arduino_uno<span class="token punctuation">::</span><span class="token function">delay_ms</span><span class="token punctuation">(</span>i <span class="token keyword">as</span> u16<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>All we do in <code class="language-text">stutter_blink</code> is call toggle on <code class="language-text">led</code> followed by a <code class="language-text">delay_ms</code> call from the <code class="language-text">arduino_uno</code> module.
-This is all done in an iterator. We create an infinite range <code class="language-text">(0..times)</code> followed by calling <code class="language-text">take</code> to limit the number of <code class="language-text">times</code> the iterator runs and then <code class="language-text">map</code> it so that we can progressively delay the LED toggle by a noticeable amount. We could have definitely done this using a for loop and that would be more readable, but I wanted to demonstrate that we can use all the high level APIs and abstractions from Rust.
+This is all done in an iterator. We create a range <code class="language-text">(0..times)</code> followed by calling <code class="language-text">map</code> so that we can progressively delay the LED toggle by a noticeable amount. We could have definitely done this using a for loop and that would be more readable, but I wanted to demonstrate that we can use all the high level APIs and abstractions from Rust.
 We are writing functional code for an embedded systems where the abstractions are zero cost.
 That's a thing possible only in Rust as far as I know!</p>
 <p>Here's the full code:</p>
@@ -157,7 +157,7 @@ That's a thing possible only in Rust as far as I know!</p>
 <span class="token keyword">use</span> arduino_uno<span class="token punctuation">::</span>hal<span class="token punctuation">::</span>port<span class="token punctuation">::</span>mode<span class="token punctuation">::</span>Output<span class="token punctuation">;</span>
 
 <span class="token keyword">fn</span> <span class="token function">stutter_blink</span><span class="token punctuation">(</span>led<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">mut</span> PB5<span class="token operator">&lt;</span>Output<span class="token operator">></span><span class="token punctuation">,</span> times<span class="token punctuation">:</span> usize<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">..</span>times<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">take</span><span class="token punctuation">(</span>times<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token operator">|</span>i<span class="token operator">|</span> i <span class="token operator">*</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">for_each</span><span class="token punctuation">(</span><span class="token closure-params"><span class="token punctuation">|</span>i<span class="token punctuation">|</span></span> <span class="token punctuation">{</span>
+    <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">..</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">take</span><span class="token punctuation">(</span>times<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token operator">|</span>i<span class="token operator">|</span> i <span class="token operator">*</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">for_each</span><span class="token punctuation">(</span><span class="token closure-params"><span class="token punctuation">|</span>i<span class="token punctuation">|</span></span> <span class="token punctuation">{</span>
         led<span class="token punctuation">.</span><span class="token function">toggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">void_unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         arduino_uno<span class="token punctuation">::</span><span class="token function">delay_ms</span><span class="token punctuation">(</span>i <span class="token keyword">as</span> u16<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -181,7 +181,7 @@ That's a thing possible only in Rust as far as I know!</p>
 <span class="token punctuation">}</span></code></pre></div>
 <p>Let's try to build this crate:</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">cargo build</code></pre></div>
-<p>If all went fine, you should see an elf file  <code class="language-text">rust-arduino-blink.elf</code> generated under  <code class="language-text">target/avr-atmega328p/debug/</code> directory. That's the binary we need to flash to our Uno. To flash the elf file, we'll use the <code class="language-text">avrdude</code> utility. Let's create a script at the root directory named <code class="language-text">flash.sh</code> that does <code class="language-text">cargo build</code> followed by flashing it our uno:</p>
+<p>If all went fine, you should see an elf file  <code class="language-text">rust-arduino-blink.elf</code> generated under <code class="language-text">target/avr-atmega328p/debug/</code> directory. That's the binary we need to flash to our Uno. To flash the elf file, we'll use the <code class="language-text">avrdude</code> utility. Let's create a script at the root directory named <code class="language-text">flash.sh</code> that does <code class="language-text">cargo build</code> followed by flashing it our uno:</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token shebang important">#! /usr/bin/zsh</span>
 
 <span class="token builtin class-name">set</span> -e
@@ -198,19 +198,19 @@ That's a thing possible only in Rust as far as I know!</p>
 
 <span class="token function">sudo</span> -u creativcoder cargo build
 avrdude -q -C/etc/avrdude.conf -patmega328p -carduino -P/dev/ttyACM0 -D <span class="token string">"-Uflash:w:<span class="token variable">$1</span>:e"</span></code></pre></div>
-<p>With that, we can run now run (make sure your Uno is connected via the USB cable):</p>
-<p><code class="language-text">./flash.sh target/avr-atmega328p/debug/rust-arduino-blink.elf</code></p>
+<p>With that, we can now run (make sure your Uno is connected via the USB cable):</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">./flash.sh target/avr-atmega328p/debug/rust-arduino-blink.elf</code></pre></div>
 <p>and there you go:</p>
 <p><img src="https://media.giphy.com/media/gFtGud1j5fNAl5yzlu/giphy.gif" alt="Rust on arduino"></p>
 <p>Our first blinking program on Arduino running Rust!</p>
 <p>If you get a permission denied error when accessing <code class="language-text">/dev/ttyACM0</code>. You may need to add your user
 to a linux user group that has access to the serial interface.
 First, we find the group using:</p>
-<p><code class="language-text">ls -l /dev/ttyACM0</code></p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">ls</span> -l /dev/ttyACM0</code></pre></div>
 <p>I get the following output on my machine:</p>
-<p><code class="language-text">crw-rw---- 1 root uucp 166, 0 Aug 19 03:29 /dev/ttyACM0</code></p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">crw-rw---- <span class="token number">1</span> root uucp <span class="token number">166</span>, <span class="token number">0</span> Aug <span class="token number">19</span> 03:29 /dev/ttyACM0</code></pre></div>
 <p>To add your username to <code class="language-text">uucp</code> group, we run:</p>
-<p><code class="language-text">sudo usermod -a -G uucp creativcoder</code></p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">usermod</span> -a -G uucp creativcoder</code></pre></div>
 <p>Suggestions/comments/corrections most welcome.</p>
 <p>I have several embedded hobby projects in plan, I will be writing about them in future as they progress. Here's the <a href="https://github.com/creativcoder/rust-arduino-blink">Github</a> for the code above.
 If you want to follow the latest in developement in Rust embedded space, follow the <a href="https://rust-embedded.github.io/blog/newsletter-24/">embedded rust working group</a></p>
