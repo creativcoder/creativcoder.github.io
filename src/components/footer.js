@@ -1,21 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import style from '../styles/newsletter.module.css'
 
 const Footer = ({}) => (
-  <footer>
+  <footer style={style.newsletter}>
     <div>
-        <span className="footerCopyrights">
-          © 2020 Built with <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </span>
-        <span className="footerCopyrights">
-          Starter created by <a href="https://radoslawkoziel.pl">panr</a>
-        </span>
+      <p>
+        Hey, welcome! I mostly write about Rust, Web, Backend engineering, distributed systems and more. <br />
+        Want to stay updated on my next post? Consider subscribing!</p>
+      <iframe src="https://creativcoder.substack.com/embed" width="380" height="320" frameBorder="0" scrolling="no"></iframe>
     </div>
   </footer>
 )
-
-Footer.propTypes = {
-  copyrights: PropTypes.string,
-}
 
 export default Footer

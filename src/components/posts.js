@@ -26,6 +26,7 @@ const Posts = ({
   const nextLabel = nextPost && nextPost.frontmatter.title
   const commentBox = React.createRef()
 
+
   useEffect(() => {
     const scriptEl = document.createElement('script')
     scriptEl.async = true
@@ -33,12 +34,18 @@ const Posts = ({
     scriptEl.setAttribute('repo', 'creativcoder/creativcoder.dev-comments')
     scriptEl.setAttribute('issue-term', 'title')
     scriptEl.setAttribute('id', 'utterances')
-    scriptEl.setAttribute('theme', 'github-light')
+    const siteTheme = window.localStorage.getItem('theme');
+    if (siteTheme) {
+      siteTheme === 'dark' ? scriptEl.setAttribute('theme', 'dark-blue') : scriptEl.setAttribute('theme', 'github-light')
+    }
     scriptEl.setAttribute('crossorigin', 'anonymous')
-    if (commentBox && commentBox.current) {
+    if (!excerpt && commentBox.current !== null) {
+      commentBox.current.innerHMTL = "";
       commentBox.current.appendChild(scriptEl)
     } else {
-      console.log(`Error adding utterances comments on: ${commentBox}`)
+      if (!excerpt) {
+        console.log("Error adding utterances comment widget", commentBox)
+      }
     }
   }, [])
 
@@ -82,7 +89,7 @@ const Posts = ({
             </Link>
           </>
         ) : (
-          <>
+            <>
             <div dangerouslySetInnerHTML={{ __html: html }} />
           
             <Navigation

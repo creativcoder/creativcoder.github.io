@@ -30,7 +30,6 @@ const SubMenu = ({ mainMenu, mainMenuItems, onToggleSubMenu }) => {
   return (
     <>
       {items}
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
       <div
         className={style.subMenuOverlay}
         role="button"
@@ -98,7 +97,7 @@ const Menu = ({
                 aria-label="Menu"
               >
                 {menuMoreText || 'Menu'}{' '}
-                <span className={style.menuArrow}>></span>
+                <span className={style.menuArrow}></span>
               </button>
               {isSubMenuVisible ? (
                 <ul className={style.subMenu}>

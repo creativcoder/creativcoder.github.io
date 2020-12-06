@@ -6,6 +6,8 @@ import Menu from './menu'
 
 import style from '../styles/header.module.css'
 
+// import style from '../styles/header.module.css'
+
 const Header = props => {
   const {
     siteLogo,
