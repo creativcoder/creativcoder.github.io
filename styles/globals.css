@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@200;300;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;300;400;600;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: Karla;
+}
+
+/* .path {
+  stroke-dasharray: 10000;
+  stroke-dashoffset: 8000;
+  animation: dash 4s alternate infinite;
+} */
+
+/* @keyframes dash {
+  from {
+    stroke-dashoffset: 10000;
+  }
+
+  to {
+    stroke-dashoffset: 500;
+  }
+} */
+
+/* .backdrop {
+  background: linear-gradient(90deg, #f3f3f3 21px, transparent 1%) center, linear-gradient(#f3f3f3 21px, transparent 1%) center, #989898;
+  background-size: 23px 23px;
+} */
+
+/* Custom width for image buttons in articles */
+img[alt=ko-fi] { width: 200px; }
+
+/* Override highlight js font selection with JetBraina */
+span[class*="hljs"] {
+  font-family: 'JetBrains Mono';
+}
