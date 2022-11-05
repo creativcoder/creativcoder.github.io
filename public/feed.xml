@@ -4,9 +4,9 @@
         <description><![CDATA[a curious tech blog]]></description>
         <link>http://localhost:3000</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 05 Nov 2022 05:47:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 05 Nov 2022 10:51:29 GMT</lastBuildDate>
         <atom:link href="http://localhost:3000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 05 Nov 2022 05:47:00 GMT</pubDate>
+        <pubDate>Sat, 05 Nov 2022 10:51:29 GMT</pubDate>
         <copyright><![CDATA[All rights reserved 2022, creativcoder]]></copyright>
         <language><![CDATA[en]]></language>
         <item>

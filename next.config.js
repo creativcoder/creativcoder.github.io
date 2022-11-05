@@ -9,7 +9,6 @@ module.exports = {
 
     return config;
   },
-  distDir: "build",
   images: {
     loader: "akamai",
     path: "/",

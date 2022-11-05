@@ -3,7 +3,7 @@ import Link from "next/link";
 import { RiHomeLine, RiYoutubeLine } from "react-icons/ri";
 import { BiPen } from "react-icons/bi";
 import { CgDarkMode, CgProfile } from "react-icons/cg";
-import { BsBrush } from "react-icons/bs";
+import { MdRssFeed } from "react-icons/md";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 import { Book, Command, Feather, Home, User, X, Youtube } from "react-feather";
@@ -65,15 +65,20 @@ export const Nav = () => {
           </Link>
           <div className="flex items-center pr-2">
             <ul className="hidden md:flex md:space-x-4 pr-3">
-              <Link legacyBehavior href="/blog">
+              <Link href="/blog">
                 <a className="hover:text-slate-500 dark:text-slate-200 text-slate-700 transition flex items-center">
                   <BiPen size={24} />
                 </a>
               </Link>
-              <Link legacyBehavior href="https://youtube.com/@creativcoder">
+              <Link href="https://youtube.com/@creativcoder">
                 <a className="hover:text-slate-500 dark:text-slate-200 text-slate-700 transition flex items-center">
                   <RiYoutubeLine size={24} />
                 </a>
+              </Link>
+              <Link href="/feed.xml">
+                <a className="hover:text-slate-500 dark:text-slate-200 text-slate-700 transition flex items-center">
+              <MdRssFeed size={24}/>
+              </a>
               </Link>
               <Link href="/about">
                 <a className="hover:text-slate-500 dark:text-slate-200 text-slate-700 transition flex items-center">

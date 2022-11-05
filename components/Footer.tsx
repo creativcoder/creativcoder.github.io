@@ -1,4 +1,6 @@
 import { SiGithubsponsors } from "react-icons/si";
+import Link from 'next/link'
+import {useEffect, useState} from 'react'
 
 function License() {
   return (
@@ -12,10 +14,24 @@ function License() {
 }
 
 function Sponser() {
+  useEffect(()=>{
+    const script = document.createElement("script");
+    let form = document.getElementById('donateForm');
+    script.setAttribute('src','https://checkout.razorpay.com/v1/payment-button.js');
+    script.setAttribute('data-payment_button_id','pl_KcJKB9oNok9oKg');
+    if (form && form?.children.length > 0){
+    } else {
+      form?.appendChild(script);
+    }
+  },[]);
+
   return (
-    <div className="px-4 py-2 flex items-center justify-center space-x-2 border-2 rounded-md border-gray-500 hover:bg-blue-100 transition-colors hover:text-lime-900">
-      <SiGithubsponsors />
-      <p>Be a GitHub Sponser</p>
+    <div className="px-4 py-2 flex-col cursor-pointer items-center justify-center space-x-2 rounded-md transition-colors">
+      {/* <Link href="https://ko-fi.com/P5P71YZ0L">
+      <img alt="ko-fi" src="https://ko-fi.com/img/githubbutton_sm.svg">
+      </img>
+      </Link> */}
+      <form id="donateForm" className="pl-3 pt-4"></form>
     </div>
   );
 }

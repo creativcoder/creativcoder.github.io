@@ -26,9 +26,10 @@ const Revue = () => {
       >
         <div className="revue-form-group">
           <input
-            className="revue-form-field px-4 py-3 mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full border-gray-300 rounded-md dark:bg-gray-200 bg-white text-gray-900 dark:text-gray-100 pr-32"
+            className="revue-form-field px-4 py-3 mt-1 focus:border-blue-500 block w-full border-gray-300 rounded-md dark:bg-gray-200 bg-white dark:text-gray-900 pr-32"
             placeholder="Your email address..."
             type="email"
+            required
             name="member[email]"
             id="member_email"
           />
