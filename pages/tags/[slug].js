@@ -4,12 +4,14 @@ import { PostCard } from "../blog";
 export default function TagPage({ slug, posts }) {
   return (
     <div className="flex flex-col space-y-10 md:max-w-6xl p-6">
-      
-      <p className="text-3xl">All posts tagged: <span className="bg-slate-50 rounded-full px-2">{slug}</span></p>
-      
+      <p className="text-3xl">
+        All posts tagged:{" "}
+        <span className="bg-slate-50 rounded-full px-2">{slug}</span>
+      </p>
+
       <br />
       {posts.map((p) => (
-        <PostCard post={p} key={p.slug}/>
+        <PostCard post={p} key={p.slug} />
       ))}
     </div>
   );

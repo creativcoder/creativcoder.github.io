@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { RiHomeLine, RiYoutubeLine } from "react-icons/ri";
+import { RiYoutubeLine } from "react-icons/ri";
 import { BiPen } from "react-icons/bi";
 import { CgDarkMode, CgProfile } from "react-icons/cg";
 import { MdRssFeed } from "react-icons/md";

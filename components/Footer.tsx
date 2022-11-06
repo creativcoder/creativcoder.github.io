@@ -1,5 +1,4 @@
-import { SiGithubsponsors } from "react-icons/si";
-import Link from 'next/link'
+
 import {useEffect, useState} from 'react'
 
 function License() {

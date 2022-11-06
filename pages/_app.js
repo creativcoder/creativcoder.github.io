@@ -30,6 +30,10 @@ function Site({ Component, pageProps }) {
         <MDXProvider>
           <Head>
             <title>creativcoder</title>
+            <meta
+              name="viewport"
+              content="initial-scale=1, viewport-fit=cover, user-scalable=no"
+            />
           </Head>
           <Component {...pageProps} />;
         </MDXProvider>
